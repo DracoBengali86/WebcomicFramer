@@ -78,8 +78,8 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
 
 
 if __name__ == "__main__":
-    urlFirstPage = 'http://cad-comic.com/comic/nice-melon/'
-    filename = 'CAD'
+    urlFirstPage = "http://cad-comic.com/comic/nice-melon/"
+    filename = "CADcomic"
 
     os.makedirs('webcomic', exist_ok=True)
     urlBuild(urlFirstPage, filename)
