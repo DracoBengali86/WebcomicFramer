@@ -8,16 +8,8 @@ import re
 import bs4  # beautifulSoup4
 from htmlCreator import buildComicPage
 
-nextLinkParent = False
-nextTag = []
-nextAttr = []
-nextStr = []
-nextTag.append("a")
-nextAttr.append("rel")
-nextStr.append("next")
 
-
-def urlBuild(urlFirstPage, filename, urlMain=None):
+def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent):
     url = urlFirstPage
     writeURL = True
     pagecount = 0
@@ -84,7 +76,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
                 nextLink = nextTemp
             nextPage = nextLink.get('href')
 
-        url = 'http://xkcd.com' + nextPage
+        url = urlnextBase + nextPage
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
@@ -98,6 +90,15 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
 if __name__ == "__main__":
     urlFirstPage = 'http://xkcd.com/1/'
     filename = "xkcd"
+    urlMain = "http://www.xkcd.com/"
+    nextLinkParent = False
+    urlnextBase = 'http://xkcd.com'
+    nextTag = []
+    nextAttr = []
+    nextStr = []
+    nextTag.append("a")
+    nextAttr.append("rel")
+    nextStr.append("next")
 
     os.makedirs('webcomic', exist_ok=True)
-    urlBuild(urlFirstPage, filename)
+    urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)

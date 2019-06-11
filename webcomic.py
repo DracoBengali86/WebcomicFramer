@@ -8,6 +8,7 @@ import urlTwoKinds
 import urlLFG
 import urlQ2Q
 import urlRoomie
+import urlFinder
 from htmlCreator import buildMainPage
 
 os.makedirs('webcomic', exist_ok=True)
@@ -16,6 +17,11 @@ visible = []
 comics = []
 files = []
 pages = []
+nextTag = []
+nextAttr = []
+nextStr = []
+nextLinkParent = False
+urlnextBase = None
 
 #XKCD
 display = True
@@ -23,11 +29,18 @@ comicname = "XKCD"
 filename = "xkcd"
 urlMain = "http://www.xkcd.com/"
 urlFirstPage = "http://xkcd.com/1/"
-totalpages = urlXkcd.urlBuild(urlFirstPage, filename)
+#totalpages = urlXkcd.urlBuild(urlFirstPage, filename)
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+urlnextBase = 'http://xkcd.com'
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
 
 #Ava's Demon
 display = True
