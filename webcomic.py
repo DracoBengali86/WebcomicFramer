@@ -20,8 +20,6 @@ pages = []
 nextTag = []
 nextAttr = []
 nextStr = []
-nextLinkParent = False
-urlnextBase = None
 
 #XKCD
 display = True
@@ -114,11 +112,8 @@ files.append(filename)
 pages.append(totalpages)
 visible.append(display)
 
-
-#Blocked by not allowing cross-origin framing
-
-#Can be used with an extension that makes browser ignore X-Frame options EX: Ignore X-Frame-Options for Firefox
 #Go Get a Roomie
+#Can be used with an extension that makes browser ignore X-Frame options EX: Ignore X-Frame-Options for Firefox
 display = True
 comicname = "Go Get a Roomie! (Requires X-Frame option extension)"
 filename = "Roomie"
@@ -130,6 +125,80 @@ files.append(filename)
 pages.append(totalpages)
 visible.append(display)
 
+#Sister Claire
+display = True
+comicname = "Sister Claire Comic"
+filename = "sisterClaire"
+urlMain = "http://www.sisterclaire.com/"
+urlFirstPage = "http://www.sisterclaire.com/comic/book-one"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+urlnextBase = ''  # full url for next page is in href
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comics.append(comicname)
+files.append(filename)
+pages.append(totalpages)
+visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
+
+#Sister Claire - Missing Moments
+display = True
+comicname = "Sister Claire Missing Moments"
+filename = "sisterClaireMM"
+urlMain = "http://www.sisterclaire.com/"
+urlFirstPage = "http://www.sisterclaire.com/missing-moments/missing-moment-la-scoperta"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+urlnextBase = ''  # full url for next page is in href
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comics.append(comicname)
+files.append(filename)
+pages.append(totalpages)
+visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
+
+#Headless Bliss
+display = True
+comicname = "Headless Bliss"
+filename = "headbliss"
+urlMain = "http://www.headlessbliss.com/"
+urlFirstPage = "http://www.headlessbliss.com/comic/page-1"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+urlnextBase = ''  # full url for next page is in href
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comics.append(comicname)
+files.append(filename)
+pages.append(totalpages)
+visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
+
+#the end
+display = True
+comicname = "the end"
+filename = "endcomic"
+urlMain = "http://www.endcomic.com/"
+urlFirstPage = "http://www.endcomic.com/comic/book-one-cover/"
+nextTag.append("a")
+nextAttr.append("class_")
+nextStr.append('comic-nav-base comic-nav-next')
+urlnextBase = ''  # full url for next page is in href
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comics.append(comicname)
+files.append(filename)
+pages.append(totalpages)
+visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
+
+
+#Blocked by not allowing cross-origin framing
 
 #WebToons - X-Frame extension doesn't allow these to work, more work required
 #maybe seperate program (using selenium?) to drive browser?

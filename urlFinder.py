@@ -59,8 +59,12 @@ def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, ne
         j = 0
         while nextTemp is None:
             if j < searchLength:
-                #nextTemp = soup.find(nextTag1, rel="next")
-                nextTemp = soup.find(nextTag[j], {nextAttr[j]: re.compile(nextStr[j])})
+                if nextAttr[j] == 'text':
+                    nextTemp = soup.find(nextTag[j], text=nextStr[j])
+                elif nextAttr[j] == 'class' or nextAttr[j] == 'class_':
+                    nextTemp = soup.find(nextTag[j], class_=nextStr[j])
+                else:
+                    nextTemp = soup.find(nextTag[j], {nextAttr[j] : re.compile(nextStr[j])})
             else:
                 print("next link couldn't be found")
                 print("last found page: " + url)
@@ -88,17 +92,19 @@ def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, ne
 
 
 if __name__ == "__main__":
-    urlFirstPage = 'http://xkcd.com/1/'
-    filename = "xkcd"
-    urlMain = "http://www.xkcd.com/"
+    comicname = "the end"
+    filename = "endcomic"
+    urlMain = "http://www.endcomic.com/"
+    urlFirstPage = "http://www.endcomic.com/comic/book-one-cover/"
+    urlnextBase = ''  # full url for next page is in href
     nextLinkParent = False
-    urlnextBase = 'http://xkcd.com'
     nextTag = []
     nextAttr = []
     nextStr = []
     nextTag.append("a")
-    nextAttr.append("rel")
-    nextStr.append("next")
+    nextAttr.append('class')
+    #nextStr.append('Next ›')
+    nextStr.append('comic-nav-base comic-nav-next')
 
     os.makedirs('webcomic', exist_ok=True)
     urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)

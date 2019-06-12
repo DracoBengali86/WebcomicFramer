@@ -138,7 +138,10 @@ def comicheader(htmlfile, pagecount, filename):
 
 def comicbody(htmlfile):
     htmlfile.write('<div style="position:absolute; top:63px; bottom:9px; left:8px; right:12px">\n' +
-                   '<iframe src="" name="ifrm" width="100%" height="100%">\n' +
+                   # left off allow-forms and allow-popups. Could probably be added, but likely not necessary
+                   # allow-top-navigation is what allowed Sister Claire to break out of iframe
+                   '<iframe sandbox="allow-same-origin allow-scripts allow-pointer-lock" ' +
+                   'src="" name="ifrm" width="100%" height="100%">\n' +
                    '  <p>Your browser does not support iframes.</p>\n' +
                    '</iframe>\n' +
                    '</div>\n' +
