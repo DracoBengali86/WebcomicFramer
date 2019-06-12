@@ -9,7 +9,7 @@ import bs4  # beautifulSoup4
 from htmlCreator import buildComicPage
 
 
-def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent):
+def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend = '.us.k12.edu'):
     url = urlFirstPage
     writeURL = True
     pagecount = 0
@@ -33,7 +33,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, ne
         return pagecount
     searchLength = len(nextTag)
 
-    while not url.endswith('#') and not url.endswith('zzzbreak'):  # on latest page url under 'Next' button ends with '#'
+    while not url.endswith(searchend) and not url.endswith('zzzbreak'):  # on latest page url under 'Next' button ends with '#'
         # Download page
         print('Finding page %s...' %url)
         res = requests.get(url)

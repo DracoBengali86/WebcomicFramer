@@ -33,7 +33,8 @@ nextAttr.append("rel")
 nextStr.append("next")
 urlnextBase = 'http://xkcd.com'
 nextLinkParent = False
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+searchend = '#'
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
@@ -58,11 +59,24 @@ comicname = "Subnromality"
 filename = "Subnormality"
 urlMain = "http://www.viruscomix.com/subnormality.html"
 urlFirstPage = "http://www.viruscomix.com/page324.html"
-totalpages = urlSubnorm.urlBuild(urlFirstPage, filename)
+# search 1
+nextTag.append("img")
+nextAttr.append("src")
+nextStr.append('subnext.*')
+#search 2
+nextTag.append("img")
+nextAttr.append("src")
+nextStr.append("nextIIC.gif")
+urlnextBase = 'http://www.viruscomix.com/'
+nextLinkParent = True
+searchend = 'subnormality.html'
+#totalpages = urlSubnorm.urlBuild(urlFirstPage, filename)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
 
 #Ctrl+Alt+Del
 display = True
