@@ -79,6 +79,8 @@ def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, ne
             else:
                 nextLink = nextTemp
             nextPage = nextLink.get('href')
+            if nextPage == "":
+                nextPage = 'zzzbreak'
 
         url = urlnextBase + nextPage
 

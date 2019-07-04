@@ -20,12 +20,12 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
     htmlfile = open('webcomic\\Webcomic.html', 'w')
 
     #common head banner code
+    #removed "overflow:hidden" from body style
     htmlfile.write('<!DOCTYPE html>\n' +
                    '<html style="height:100%">\n' +
                    '<head>\n' +
                    '<title>Webcomic</title>\n' +
                    '</head>\n' +
-                   '<body style="overflow:hidden; height:100%" onload="updateProgress()">\n' +
                    '<div style="left:8px; right:12px; height:65px; background-color: grey">\n' +
                    '<input type="file" name="names[]" id="name" />\n' +
                    '<button onclick="restoredata()" type="button">Upload Progress</button>\n' +

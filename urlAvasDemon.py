@@ -26,12 +26,26 @@ def urlBuild(urlFirstPage, filename, urlMain):
                 writeURL = False
                 url = lines[pagecount - 1]
 
-    res = requests.get(urlMain)
-    res.raise_for_status()
-    soup = bs4.BeautifulSoup(res.text, features='html.parser')
-    latestLink = soup.find("img",src="latest.png").parent
-    latestPage = latestLink.get('href')[-4:]
-    pastLatest = str(int(latestPage) + 1).zfill(4)
+
+    #Main URL uses an event to load latest page instead of an href
+    #will need to work out how to read the event (or manually add pages)
+
+    try:
+        res = requests.get(urlMain)
+        res.raise_for_status()
+        soup = bs4.BeautifulSoup(res.text, features='html.parser')
+        latestLink = soup.find("img",src="latest.png").parent
+        latestPage = latestLink.get('href')[-4:]
+        pastLatest = str(int(latestPage) + 1).zfill(4)
+    except TypeError:
+        print("***Ava's Demon is currently broken***")
+        print('***Current Pagecount: ' + str(pagecount) + '***\n')
+        try:
+            buildComicPage(pagecount, filename, True)
+        except:
+            print("building comic page failed!")
+            return 0
+        return pagecount
 
     while not url.endswith(pastLatest):  # on latest page url under 'Next' button ends with '#'
         # Download page
@@ -57,8 +71,8 @@ def urlBuild(urlFirstPage, filename, urlMain):
         nextPage = int(nextLink) + 1
         nextLink = str(nextPage).zfill(4)
 
-        url = 'http://www.AvasDemon.com/pages.php?page=' + nextLink
-        #url = 'url = 'http://www.avasdemon.com/pages.php#" + nextLink
+        #url = 'http://www.AvasDemon.com/pages.php?page=' + nextLink
+        url = 'http://www.avasdemon.com/pages.php?page#' + nextLink
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))

@@ -211,6 +211,25 @@ pages.append(totalpages)
 visible.append(display)
 del nextTag[:], nextAttr[:], nextStr[:]
 
+#Bedlam Genesis
+display = True
+comicname = "Bedlam Genesis"
+filename = "bedlam"
+urlMain = "http://bedlamgenesis.com/index"
+urlFirstPage = "http://bedlamgenesis.com/index?V=1&C=1&P=1"
+nextTag.append("img")
+nextAttr.append("src")
+nextStr.append("next.png")
+urlnextBase = 'http://bedlamgenesis.com/'
+nextLinkParent = True
+searchend = '#'
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
+comics.append(comicname)
+files.append(filename)
+pages.append(totalpages)
+visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
+
 
 #Blocked by not allowing cross-origin framing
 
