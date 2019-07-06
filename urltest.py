@@ -10,15 +10,15 @@ from selenium import webdriver
 #filename = 'AvasDemon'
 #urlAvasDemon.urlAvasDemon(urlFirstPage, urlMain, filename)
 
+#try:
+#    driver = webdriver.Firefox()
+#except:
+#print("Firefox not found")
 try:
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
 except:
-    print("Firefox not found")
-    try:
-        driver = webdriver.Chrome()
-    except:
-        print("Chrome not found")
-        exit(999)
+    print("Chrome not found")
+    exit(999)
 
 #driver.get("https://www.webtoons.com/en/sf/seed/prologue/viewer?title_no=1480&episode_no=1")
 
@@ -33,6 +33,6 @@ driver.get("http://www.AvasDemon.com/pages.php?page#2462")
 #select the next button
 next_button = driver.find_element_by_xpath("//img[@src='next.png']")
 print("next button")
-#next_button.click()
-print(driver.current_url())
+next_button.click()
+print(driver.current_url)
 
