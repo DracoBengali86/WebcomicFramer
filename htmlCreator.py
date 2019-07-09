@@ -26,6 +26,7 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '<head>\n' +
                    '<title>Webcomic</title>\n' +
                    '</head>\n' +
+                   '<body style="height:100%" onload="updateProgress()">\n' +
                    '<div style="left:8px; right:12px; height:65px; background-color: grey">\n' +
                    '<input type="file" name="names[]" id="name" />\n' +
                    '<button onclick="restoredata()" type="button">Upload Progress</button>\n' +
