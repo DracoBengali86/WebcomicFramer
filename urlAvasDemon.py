@@ -2,6 +2,7 @@ import requests
 import os
 #import re
 import bs4  # beautifulSoup4
+from selenium import webdriver
 from htmlCreator import buildComicPage
 
 #latestPage = '2382'
@@ -26,18 +27,18 @@ def urlBuild(urlFirstPage, filename, urlMain):
                 writeURL = False
                 url = lines[pagecount - 1]
 
-
-    #Main URL uses an event to load latest page instead of an href
-    #will need to work out how to read the event (or manually add pages)
-
     try:
-        res = requests.get(urlMain)
-        res.raise_for_status()
-        soup = bs4.BeautifulSoup(res.text, features='html.parser')
-        latestLink = soup.find("img",src="latest.png").parent
-        latestPage = latestLink.get('href')[-4:]
+        driver = webdriver.Chrome()
+        driver.get(urlMain)
+        # select the next button
+        latest_button = driver.find_element_by_xpath("//img[@src='latest.png']")
+        latest_button.click()
+        latestLink = driver.current_url
+        driver.quit()
+        latestPage = latestLink[-4:]
         pastLatest = str(int(latestPage) + 1).zfill(4)
     except TypeError:
+        print("Chrome not found")
         print("***Ava's Demon is currently broken***")
         print('***Current Pagecount: ' + str(pagecount) + '***\n')
         try:

@@ -28,11 +28,14 @@ except:
 
 #driver.get("https://www.webtoons.com/en/sf/seed/episode-1/viewer?title_no=1480&episode_no=2")
 
-driver.get("http://www.AvasDemon.com/pages.php?page#2462")
+driver.get("http://www.AvasDemon.com")
 #print(driver.current_url())
 #select the next button
-next_button = driver.find_element_by_xpath("//img[@src='next.png']")
+next_button = driver.find_element_by_xpath("//img[@src='latest.png']")
 print("next button")
 next_button.click()
-print(driver.current_url)
+str = driver.current_url
+print(str)
+cutstr = str[-4:]
+print(cutstr)
 
