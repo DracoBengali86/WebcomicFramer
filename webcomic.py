@@ -139,6 +139,25 @@ files.append(filename)
 pages.append(totalpages)
 visible.append(display)
 
+#Stand Still, Stay Silent
+display = True
+comicname = "Stand Still. Stay Silent"
+filename = "sssscomic"
+urlMain = "http://www.sssscomic.com/"
+urlFirstPage = "http://sssscomic.com/comic.php?page=1"
+nextTag.append("img")
+nextAttr.append("src")
+nextStr.append("next.png")
+urlnextBase = 'http://sssscomic.com/comic.php'  # sometimes full url, sometimes not...need to work on this
+nextLinkParent = True
+#totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+totalpages = 974
+comics.append(comicname)
+files.append(filename)
+pages.append(totalpages)
+visible.append(display)
+del nextTag[:], nextAttr[:], nextStr[:]
+
 #Sister Claire
 display = True
 comicname = "Sister Claire Comic"

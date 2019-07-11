@@ -2,6 +2,7 @@ import requests
 import os
 #import re
 import bs4  # beautifulSoup4
+from datetime import datetime
 from selenium import webdriver
 from htmlCreator import buildComicPage
 
@@ -26,6 +27,18 @@ def urlBuild(urlFirstPage, filename, urlMain):
             if pagecount > 0:
                 writeURL = False
                 url = lines[pagecount - 1]
+
+    currentDate = datetime.now()
+    fileDate = datetime.fromtimestamp(os.path.getmtime("webcomic/" + filename))
+    fileAge = currentDate - fileDate
+    # print("Current Date: " + currentDate.strftime("%Y-%m-%d %H:%M:%S"))
+    # print("File Date: " + fileDate.strftime("%Y-%m-%d %H:%M:%S"))
+    # print(fileAge.days)
+
+    # If file is less then a week old, don't update it.
+    # Comic currently updates every Thursday
+    if fileAge.days < 7:
+        return pagecount
 
     try:
         driver = webdriver.Chrome()
