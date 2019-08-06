@@ -20,6 +20,7 @@ pages = []
 nextTag = []
 nextAttr = []
 nextStr = []
+urlBase = []
 
 #XKCD
 display = True
@@ -31,15 +32,15 @@ urlFirstPage = "http://xkcd.com/1/"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-urlnextBase = 'http://xkcd.com'
+urlBase.append('http://xkcd.com')
 nextLinkParent = False
 searchend = '#'
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Ava's Demon
 display = True
@@ -67,16 +68,16 @@ nextStr.append('subnext.*')
 nextTag.append("img")
 nextAttr.append("src")
 nextStr.append("nextIIC.gif")
-urlnextBase = 'http://www.viruscomix.com/'
+urlBase.append('http://www.viruscomix.com/')
 nextLinkParent = True
 searchend = 'subnormality.html'
 #totalpages = urlSubnorm.urlBuild(urlFirstPage, filename)
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Ctrl+Alt+Del
 display = True
@@ -148,15 +149,16 @@ urlFirstPage = "http://sssscomic.com/comic.php?page=1"
 nextTag.append("img")
 nextAttr.append("src")
 nextStr.append("next.png")
-urlnextBase = 'http://sssscomic.com/comic.php'  # sometimes full url, sometimes not...need to work on this
+urlBase.append('http://sssscomic.com/comic.php')
+urlBase.append('http://sssscomic.com/comic2.php')
 nextLinkParent = True
-#totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
-totalpages = 974
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=True)
+#totalpages = 974
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Sister Claire
 display = True
@@ -167,14 +169,14 @@ urlFirstPage = "http://www.sisterclaire.com/comic/book-one"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-urlnextBase = ''  # full url for next page is in href
+#urlBase = ''  # full url for next page is in href
 nextLinkParent = False
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Sister Claire - Missing Moments
 display = True
@@ -185,14 +187,14 @@ urlFirstPage = "http://www.sisterclaire.com/missing-moments/missing-moment-la-sc
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-urlnextBase = ''  # full url for next page is in href
+#urlBase = ''  # full url for next page is in href
 nextLinkParent = False
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Headless Bliss
 display = True
@@ -203,14 +205,14 @@ urlFirstPage = "http://www.headlessbliss.com/comic/page-1"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-urlnextBase = ''  # full url for next page is in href
+#urlBase = ''  # full url for next page is in href
 nextLinkParent = False
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #the end
 display = True
@@ -221,14 +223,14 @@ urlFirstPage = "http://www.endcomic.com/comic/book-one-cover/"
 nextTag.append("a")
 nextAttr.append("class_")
 nextStr.append('comic-nav-base comic-nav-next')
-urlnextBase = ''  # full url for next page is in href
+#urlBase = ''  # full url for next page is in href
 nextLinkParent = False
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Bedlam Genesis
 display = True
@@ -239,15 +241,15 @@ urlFirstPage = "http://bedlamgenesis.com/index?V=1&C=1&P=1"
 nextTag.append("img")
 nextAttr.append("src")
 nextStr.append("next.png")
-urlnextBase = 'http://bedlamgenesis.com/'
+urlBase.append('http://bedlamgenesis.com/')
 nextLinkParent = True
 searchend = '#'
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend)
 comics.append(comicname)
 files.append(filename)
 pages.append(totalpages)
 visible.append(display)
-del nextTag[:], nextAttr[:], nextStr[:]
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
 #Blocked by not allowing cross-origin framing

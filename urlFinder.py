@@ -9,7 +9,8 @@ import bs4  # beautifulSoup4
 from htmlCreator import buildComicPage
 
 
-def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent, searchend = '.us.k12.edu'):
+def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
+             searchend = '.us.k12.edu', baseChanges = False):
     url = urlFirstPage
     writeURL = True
     pagecount = 0
@@ -27,6 +28,11 @@ def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, ne
             if pagecount > 0:
                 writeURL = False
                 url = lines[pagecount - 1]
+
+    if len(urlBases) < 1:
+        print("No Base defined, assuming full URL in next link")
+        urlBases.append("")
+    urlnextBase = urlBases[0]
 
     if len(nextTag) != len(nextAttr) or len(nextTag) != len(nextStr):
         print("Search conditions length mismatch")
@@ -82,31 +88,51 @@ def urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, ne
             if nextPage == "":
                 nextPage = 'zzzbreak'
 
-        url = urlnextBase + nextPage
+        # Make urlNextBase an array, and use <str>.startswith(<str>) to compare bases
+
+        if baseChanges and nextPage.startswith("http"):
+            numBases = len(urlBases)
+            k = 0
+            while k < numBases:
+                if nextPage.startswith(urlBases[k]):
+                    print("New base found: " + urlBases[k])
+                    urlnextBase = urlBases[k]
+                    url = nextPage
+                    break
+                k += 1
+            if k == numBases:
+                print("No matching base URL. Cannot proceed till new base is added to array")
+                print("Previous base: " + urlnextBase)
+                print("Latest url (not added): " + nextPage)
+                print("Current Pagecout: " + str(pagecount))
+                buildComicPage(pagecount, filename)
+                return pagecount
+        else:
+            url = urlnextBase + nextPage
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
 
-    #htmlXkcd(pagecount, filename)
     buildComicPage(pagecount, filename)
 
     return pagecount
 
 
 if __name__ == "__main__":
-    comicname = "the end"
-    filename = "endcomic"
-    urlMain = "http://www.endcomic.com/"
-    urlFirstPage = "http://www.endcomic.com/comic/book-one-cover/"
-    urlnextBase = ''  # full url for next page is in href
-    nextLinkParent = False
     nextTag = []
     nextAttr = []
     nextStr = []
-    nextTag.append("a")
-    nextAttr.append('class')
-    #nextStr.append('Next ›')
-    nextStr.append('comic-nav-base comic-nav-next')
+    urlBases = []
+    comicname = "Stand Still. Stay Silent"
+    filename = "sssscomic"
+    urlMain = "http://www.sssscomic.com/"
+    urlFirstPage = "http://sssscomic.com/comic.php?page=1"
+    urlBases.append('http://sssscomic.com/comic.php')  # sometimes full url, sometimes not...need to work on this
+    nextLinkParent = True
+    baseChange = True
+    nextTag.append("img")
+    nextAttr.append("src")
+    nextStr.append("next.png")
 
     os.makedirs('webcomic', exist_ok=True)
-    urlBuild(urlFirstPage, filename, urlMain, urlnextBase, nextTag, nextAttr, nextStr, nextLinkParent)
+    urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)

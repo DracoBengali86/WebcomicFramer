@@ -27,7 +27,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
             if pagecount > 0:
                 writeURL = False
                 url = lines[pagecount - 1]
-
+    return pagecount
     currentDate = datetime.now()
     fileDate = datetime.fromtimestamp(os.path.getmtime("webcomic/" + filename))
     fileAge = currentDate - fileDate
@@ -40,6 +40,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
     if fileAge.days < 7:
         return pagecount
 
+  # Current Latest page ends with '2476.html', need to handle error or make work
     try:
         driver = webdriver.Chrome()
         driver.get(urlMain)
