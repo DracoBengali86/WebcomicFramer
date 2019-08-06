@@ -27,7 +27,10 @@ def urlBuild(urlFirstPage, filename, urlMain):
             if pagecount > 0:
                 writeURL = False
                 url = lines[pagecount - 1]
+
+    # Remove once error handled or ending with .HTML fixed
     return pagecount
+
     currentDate = datetime.now()
     fileDate = datetime.fromtimestamp(os.path.getmtime("webcomic/" + filename))
     fileAge = currentDate - fileDate
