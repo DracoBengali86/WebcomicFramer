@@ -28,9 +28,6 @@ def urlBuild(urlFirstPage, filename, urlMain):
                 writeURL = False
                 url = lines[pagecount - 1]
 
-    # Remove once error handled or ending with .HTML fixed
-    return pagecount
-
     currentDate = datetime.now()
     fileDate = datetime.fromtimestamp(os.path.getmtime("webcomic/" + filename))
     fileAge = currentDate - fileDate
@@ -41,9 +38,10 @@ def urlBuild(urlFirstPage, filename, urlMain):
     # If file is less then a week old, don't update it.
     # Comic currently updates every Thursday
     if fileAge.days < 7:
+        print("Latest search less then 7 days ago, rebuilding page (No search performed)")
+        buildComicPage(pagecount, filename, True)
         return pagecount
 
-  # Current Latest page ends with '2476.html', need to handle error or make work
     try:
         driver = webdriver.Chrome()
         driver.get(urlMain)
@@ -53,6 +51,17 @@ def urlBuild(urlFirstPage, filename, urlMain):
         latestLink = driver.current_url
         driver.quit()
         latestPage = latestLink[-4:]
+        if not latestPage.isdigit():
+            lastDot = latestLink.rfind(".")
+            latestPage = latestLink[lastDot - 4:lastDot]
+            if not latestPage.isdigit():
+                print("Failed to find Latest page")
+                try:
+                    buildComicPage(pagecount, filename, True)
+                    return pagecount
+                except:
+                    print("building comic page failed!")
+                    return 0
         pastLatest = str(int(latestPage) + 1).zfill(4)
     except TypeError:
         print("Chrome not found")
