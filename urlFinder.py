@@ -85,7 +85,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             else:
                 nextLink = nextTemp
             nextPage = nextLink.get('href')
-            if nextPage == "":
+            if nextPage == "" or nextPage is None:
                 nextPage = 'zzzbreak'
 
         # Make urlNextBase an array, and use <str>.startswith(<str>) to compare bases
@@ -127,7 +127,8 @@ if __name__ == "__main__":
     filename = "sssscomic"
     urlMain = "http://www.sssscomic.com/"
     urlFirstPage = "http://sssscomic.com/comic.php?page=1"
-    urlBases.append('http://sssscomic.com/comic.php')  # sometimes full url, sometimes not...need to work on this
+    urlBases.append('http://sssscomic.com/comic.php')
+    urlBases.append('http://sssscomic.com/comic2.php')
     nextLinkParent = True
     baseChange = True
     nextTag.append("img")
