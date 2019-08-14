@@ -61,7 +61,11 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '	if (progressBar !== null) {\n' +
                    '      progressBar.value = myposition;\n' +
                    '      progressBar.getElementsByTagName(\'span\')[0].textContent = myposition\n' +
-                   '      document.getElementById(\'page\' + key).innerHTML = "Page " + myposition;\n' +
+                   '      if (myposition == progressBar.max) {\n' +
+                   '        document.getElementById(\'page\' + key).innerHTML = "No New Pages ";\n' +
+                   '      } else {\n' +
+                   '        document.getElementById(\'page\' + key).innerHTML = "Page " + myposition;\n' +
+                   '      }\n' +
                    '	}\n' +
                    '  }\n' +
                    '}\n' +

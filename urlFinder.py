@@ -12,6 +12,7 @@ from htmlCreator import buildComicPage
 def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
              searchend = '.us.k12.edu', baseChanges = False):
     url = urlFirstPage
+    numBases = len(urlBases)
     writeURL = True
     pagecount = 0
     i = 0
@@ -29,17 +30,27 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 writeURL = False
                 url = lines[pagecount - 1]
 
-    if len(urlBases) < 1:
+    if numBases < 1:
         print("No Base defined, assuming full URL in next link")
         urlBases.append("")
-    urlnextBase = urlBases[0]
+        urlnextBase = urlBases[0]
+        numBases = 1
+    elif not writeURL and numBases > 1:
+        m = 0
+        while m < numBases:
+            if url.startswith(urlBases[m]):
+                urlnextBase = urlBases[m]
+                break
+            m += 1
+    else:
+        urlnextBase = urlBases[0]
 
     if len(nextTag) != len(nextAttr) or len(nextTag) != len(nextStr):
         print("Search conditions length mismatch")
         return pagecount
     searchLength = len(nextTag)
 
-    while not url.endswith(searchend) and not url.endswith('zzzbreak'):  # on latest page url under 'Next' button ends with '#'
+    while not url.endswith(searchend) and not url.endswith('zzzbreak'):
         # Download page
         print('Finding page %s...' %url)
         res = requests.get(url)
@@ -88,10 +99,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             if nextPage == "" or nextPage is None:
                 nextPage = 'zzzbreak'
 
-        # Make urlNextBase an array, and use <str>.startswith(<str>) to compare bases
-
         if baseChanges and nextPage.startswith("http"):
-            numBases = len(urlBases)
             k = 0
             while k < numBases:
                 if nextPage.startswith(urlBases[k]):
