@@ -145,6 +145,21 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+#HalfLight
+display = True
+comicname = "HalfLight"
+filename = "halflight"
+urlMain = "http://halflightcomics.com/"
+urlFirstPage = "http://halflightcomics.com/http:/halflightcomics.com/comic/chapter-1"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append('navi navi-next')
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #TwoKinds
 display = True
 comicname = "TwoKinds"
