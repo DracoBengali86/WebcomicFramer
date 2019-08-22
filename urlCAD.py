@@ -30,8 +30,10 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         try:
             res = requests.get(url)
             res.raise_for_status()
-        except requests.exceptions.HTTPError as err:
+        except requests.exceptions.RequestException as err:
+            print(" *** ")
             print(err)
+            print(" *** ")
             break
 
         soup = bs4.BeautifulSoup(res.text, features='html.parser')

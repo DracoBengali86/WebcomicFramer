@@ -104,16 +104,24 @@ def urlBuild(urlFirstPage, filename, urlMain):
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
 
+    # update modified date on file if latest page is last page in file
+    if i == 0:
+        try:
+            os.utime("webcomic/" + filename)
+        except:
+            print("Error updating modified time: " + filename)
+            exit(-1)
+
     buildComicPage(pagecount, filename, True)
 
     return pagecount
 
 
 if __name__ == "__main__":
-    urlFirstPage = 'http://www.AvasDemon.com/pages.php?page=0001'
-    #url = 'http://www.AvasDemon.com/pages.php#0001'
-    urlMain = 'http://www.AvasDemon.com'
-    filename = 'AvasDemon'
+    comicname = "Ava's Demon"
+    filename = "AvasDemon"
+    urlMain = "http://www.AvasDemon.com"
+    urlFirstPage = "http://www.AvasDemon.com/pages.php#0001"
 
     os.makedirs('webcomic', exist_ok=True)
     urlBuild(urlFirstPage, filename, urlMain)

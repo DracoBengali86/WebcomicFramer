@@ -12,6 +12,7 @@ from htmlCreator import buildComicPage
 def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
              searchend = '.us.k12.edu', baseChanges = False):
     url = urlFirstPage
+    urlPrev = ''
     numBases = len(urlBases)
     writeURL = True
     pagecount = 0
@@ -50,11 +51,33 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
         return pagecount
     searchLength = len(nextTag)
 
-    while not url.endswith(searchend) and not url.endswith('zzzbreak'):
+    # Stop if the next url is the "searchend", or no next URL is found, or next URL is the same as the previous URL
+    while not url.endswith(searchend) and not url.endswith('zzzbreak') and urlPrev != url:
         # Download page
         print('Finding page %s...' %url)
-        res = requests.get(url)
-        res.raise_for_status()
+        try:
+            res = requests.get(url)
+        except requests.ConnectionError as err:
+            try:
+                res = requests.get(url, verify=False)
+            except:
+                print(" *** ")
+                print(err)
+                print(" *** ")
+                break
+        except requests.exceptions.RequestException as err:
+            print(" *** ")
+            print(err)
+            print(" *** ")
+            break
+
+        try:
+            res.raise_for_status()
+        except requests.exceptions.RequestException as err:
+            print(" *** ")
+            print(err)
+            print(" *** ")
+            break
 
         soup = bs4.BeautifulSoup(res.text, features='html.parser')
 
@@ -99,6 +122,8 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             if nextPage == "" or nextPage is None:
                 nextPage = 'zzzbreak'
 
+        urlPrev = url
+
         if baseChanges and nextPage.startswith("http"):
             k = 0
             while k < numBases:
@@ -130,18 +155,17 @@ if __name__ == "__main__":
     nextTag = []
     nextAttr = []
     nextStr = []
-    urlBases = []
-    comicname = "Stand Still. Stay Silent"
-    filename = "sssscomic"
-    urlMain = "http://www.sssscomic.com/"
-    urlFirstPage = "http://sssscomic.com/comic.php?page=1"
-    urlBases.append('http://sssscomic.com/comic.php')
-    urlBases.append('http://sssscomic.com/comic2.php')
-    nextLinkParent = True
-    baseChange = True
-    nextTag.append("img")
-    nextAttr.append("src")
-    nextStr.append("next.png")
+    urlBase = []
+    comicname = "Depths Of My Empty Soul"
+    filename = "Depths"
+    urlMain = "http://depthsofmyemptysoul.smackjeeves.com/"
+    urlFirstPage = "http://depthsofmyemptysoul.smackjeeves.com/mature.php?ref=http://depthsofmyemptysoul.smackjeeves.com/comics/1629357/welcome/"
+    nextTag.append("a")
+    nextAttr.append("text")
+    nextStr.append('Next >')
+    urlBase.append('http://depthsofmyemptysoul.smackjeeves.com/mature.php?ref=')
+    nextLinkParent = False
+    baseChange = False
 
     os.makedirs('webcomic', exist_ok=True)
-    urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)
+    urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)

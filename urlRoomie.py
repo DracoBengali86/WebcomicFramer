@@ -27,8 +27,14 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
     while not url.endswith('zzzbreak'):  # on latest page url under 'Next' button ends with '#'
         # Download page
         print('Finding page %s...' %url)
-        res = requests.get(url)
-        res.raise_for_status()
+        try:
+            res = requests.get(url)
+            res.raise_for_status()
+        except requests.exceptions.RequestException as err:
+            print(" *** ")
+            print(err)
+            print(" *** ")
+            break
 
         soup = bs4.BeautifulSoup(res.text, features='html.parser')
 
@@ -74,9 +80,10 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
 
 
 if __name__ == "__main__":
-    urlFirstPage = 'http://www.gogetaroomie.com/comic/and-so-it-begins'
-    urlMain = "http://www.gogetaroomie.com/"
+    comicname = "Go Get a Roomie! (Mature) (Requires X-Frame option extension)"
     filename = "Roomie"
+    urlMain = "http://www.gogetaroomie.com/"
+    urlFirstPage = 'http://www.gogetaroomie.com/comic/and-so-it-begins'
 
     os.makedirs('webcomic', exist_ok=True)
     urlBuild(urlFirstPage, filename, urlMain)

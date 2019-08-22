@@ -1,9 +1,7 @@
 import os
 #import webbrowser
-#import urlXkcd
 import urlAvasDemon
 import urlCAD
-#import urlSubnorm
 import urlTwoKinds
 import urlLFG
 import urlQ2Q
@@ -88,6 +86,65 @@ urlFirstPage = "http://cad-comic.com/comic/nice-melon/"
 totalpages = urlCAD.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
+#Devilbear
+display = True
+comicname = "Devilbear: The Grimoires of Bearalzebub"
+filename = "Devilbear"
+urlMain = "http://www.thedevilbear.com/"
+urlFirstPage = "http://www.thedevilbear.com/b/comic/its-for-you/"
+nextTag.append("a")
+nextAttr.append("class_")
+nextStr.append('comic-nav-base comic-nav-next')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Depths of my Empty Soul
+display = True
+comicname = "Depths Of My Empty Soul (Mature)"
+filename = "Depths"
+urlMain = "http://depthsofmyemptysoul.smackjeeves.com/"
+urlFirstPage = "http://depthsofmyemptysoul.smackjeeves.com/comics/1629357/welcome/"
+nextTag.append("a")
+nextAttr.append("text")
+nextStr.append('Next >')
+urlBase.append('http://depthsofmyemptysoul.smackjeeves.com/mature.php?ref=')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Druids
+display = False
+comicname = "Druids (Mature)"
+filename = "Druids"
+urlMain = "http://druids.thecomicseries.com/"
+urlFirstPage = "http://druids.thecomicseries.com/comics/first/"
+nextTag.append("")
+nextAttr.append("")
+nextStr.append('')
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Greg
+display = True
+comicname = "Greg"
+filename = "Greg"
+urlMain = "https://www.theduckwebcomics.com/Greg/"
+urlFirstPage = "https://www.theduckwebcomics.com/Greg/5491003/"
+nextTag.append("img")
+nextAttr.append("src")
+nextStr.append('next.png')
+urlBase.append('https://www.theduckwebcomics.com')
+nextLinkParent = True
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #TwoKinds
 display = True
 comicname = "TwoKinds"
@@ -118,7 +175,7 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 #Go Get a Roomie
 #Can be used with an extension that makes browser ignore X-Frame options EX: Ignore X-Frame-Options for Firefox
 display = True
-comicname = "Go Get a Roomie! (Requires X-Frame option extension)"
+comicname = "Go Get a Roomie! (Mature) (Requires X-Frame option extension)"
 filename = "Roomie"
 urlMain = "http://www.gogetaroomie.com/"
 urlFirstPage = 'http://www.gogetaroomie.com/comic/and-so-it-begins'
@@ -150,7 +207,7 @@ urlFirstPage = "http://www.sisterclaire.com/comic/book-one"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase = ''  # full url for next page is in href
+#urlBase.append("")  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
@@ -165,7 +222,7 @@ urlFirstPage = "http://www.sisterclaire.com/missing-moments/missing-moment-la-sc
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase = ''  # full url for next page is in href
+#urlBase.append("")  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
@@ -180,7 +237,7 @@ urlFirstPage = "http://www.headlessbliss.com/comic/page-1"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase = ''  # full url for next page is in href
+#urlBase.append("")  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
@@ -297,7 +354,7 @@ urlFirstPage = "http://home-comic.smackjeeves.com/comics/2256824/page-1/"
 display = False
 comicname = "Mortal Half"
 filename = ""
-urlMain = ""
+urlMain = "http://www.mortalhalf.com/webcomic/"
 urlFirstPage = ""
 
 #Succubus Justice--DEAD

@@ -27,8 +27,14 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
     while not url.endswith('zzzbreak'):  # on latest page url under 'Next' button ends with '#'
         # Download page
         print('Finding page %s...' %url)
-        res = requests.get(url)
-        res.raise_for_status()
+        try:
+            res = requests.get(url)
+            res.raise_for_status()
+        except requests.exceptions.RequestException as err:
+            print(" *** ")
+            print(err)
+            print(" *** ")
+            break
 
         soup = bs4.BeautifulSoup(res.text, features='html.parser')
 
