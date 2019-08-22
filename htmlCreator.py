@@ -20,12 +20,13 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
     htmlfile = open('webcomic\\Webcomic.html', 'w')
 
     #common head banner code
+    #removed "overflow:hidden" from body style
     htmlfile.write('<!DOCTYPE html>\n' +
                    '<html style="height:100%">\n' +
                    '<head>\n' +
                    '<title>Webcomic</title>\n' +
                    '</head>\n' +
-                   '<body style="overflow:hidden; height:100%" onload="updateProgress()">\n' +
+                   '<body style="height:100%" onload="updateProgress()">\n' +
                    '<div style="left:8px; right:12px; height:65px; background-color: grey">\n' +
                    '<input type="file" name="names[]" id="name" />\n' +
                    '<button onclick="restoredata()" type="button">Upload Progress</button>\n' +
@@ -60,7 +61,11 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '	if (progressBar !== null) {\n' +
                    '      progressBar.value = myposition;\n' +
                    '      progressBar.getElementsByTagName(\'span\')[0].textContent = myposition\n' +
-                   '      document.getElementById(\'page\' + key).innerHTML = "Page " + myposition;\n' +
+                   '      if (myposition == progressBar.max) {\n' +
+                   '        document.getElementById(\'page\' + key).innerHTML = "No New Pages ";\n' +
+                   '      } else {\n' +
+                   '        document.getElementById(\'page\' + key).innerHTML = "Page " + myposition;\n' +
+                   '      }\n' +
                    '	}\n' +
                    '  }\n' +
                    '}\n' +
@@ -138,7 +143,10 @@ def comicheader(htmlfile, pagecount, filename):
 
 def comicbody(htmlfile):
     htmlfile.write('<div style="position:absolute; top:63px; bottom:9px; left:8px; right:12px">\n' +
-                   '<iframe src="" name="ifrm" width="100%" height="100%">\n' +
+                   # left off allow-forms and allow-popups. Could probably be added, but likely not necessary
+                   # allow-top-navigation is what allowed Sister Claire to break out of iframe
+                   '<iframe sandbox="allow-same-origin allow-scripts allow-pointer-lock" ' +
+                   'src="" name="ifrm" width="100%" height="100%">\n' +
                    '  <p>Your browser does not support iframes.</p>\n' +
                    '</iframe>\n' +
                    '</div>\n' +

@@ -2,6 +2,8 @@ import requests
 import os
 #import re
 import bs4  # beautifulSoup4
+from datetime import datetime
+from selenium import webdriver
 from htmlCreator import buildComicPage
 
 #latestPage = '2382'
@@ -26,12 +28,51 @@ def urlBuild(urlFirstPage, filename, urlMain):
                 writeURL = False
                 url = lines[pagecount - 1]
 
-    res = requests.get(urlMain)
-    res.raise_for_status()
-    soup = bs4.BeautifulSoup(res.text, features='html.parser')
-    latestLink = soup.find("img",src="latest.png").parent
-    latestPage = latestLink.get('href')[-4:]
-    pastLatest = str(int(latestPage) + 1).zfill(4)
+    currentDate = datetime.now()
+    fileDate = datetime.fromtimestamp(os.path.getmtime("webcomic/" + filename))
+    fileAge = currentDate - fileDate
+    # print("Current Date: " + currentDate.strftime("%Y-%m-%d %H:%M:%S"))
+    # print("File Date: " + fileDate.strftime("%Y-%m-%d %H:%M:%S"))
+    # print(fileAge.days)
+
+    # If file is less then a week old, don't update it.
+    # Comic currently updates every Thursday
+    if fileAge.days < 7:
+        print("Latest search less then 7 days ago, rebuilding page (No search performed)")
+        buildComicPage(pagecount, filename, True)
+        return pagecount
+
+    try:
+        driver = webdriver.Chrome()
+        driver.get(urlMain)
+        # select the next button
+        latest_button = driver.find_element_by_xpath("//img[@src='latest.png']")
+        latest_button.click()
+        latestLink = driver.current_url
+        driver.quit()
+        latestPage = latestLink[-4:]
+        if not latestPage.isdigit():
+            lastDot = latestLink.rfind(".")
+            latestPage = latestLink[lastDot - 4:lastDot]
+            if not latestPage.isdigit():
+                print("Failed to find Latest page")
+                try:
+                    buildComicPage(pagecount, filename, True)
+                    return pagecount
+                except:
+                    print("building comic page failed!")
+                    return 0
+        pastLatest = str(int(latestPage) + 1).zfill(4)
+    except TypeError:
+        print("Chrome not found")
+        print("***Ava's Demon is currently broken***")
+        print('***Current Pagecount: ' + str(pagecount) + '***\n')
+        try:
+            buildComicPage(pagecount, filename, True)
+        except:
+            print("building comic page failed!")
+            return 0
+        return pagecount
 
     while not url.endswith(pastLatest):  # on latest page url under 'Next' button ends with '#'
         # Download page
@@ -57,8 +98,8 @@ def urlBuild(urlFirstPage, filename, urlMain):
         nextPage = int(nextLink) + 1
         nextLink = str(nextPage).zfill(4)
 
-        url = 'http://www.AvasDemon.com/pages.php?page=' + nextLink
-        #url = 'url = 'http://www.avasdemon.com/pages.php#" + nextLink
+        #url = 'http://www.AvasDemon.com/pages.php?page=' + nextLink
+        url = 'http://www.avasdemon.com/pages.php?page#' + nextLink
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
