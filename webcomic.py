@@ -116,15 +116,15 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Druids
-display = False
+display = True
 comicname = "Druids (Mature)"
 filename = "Druids"
 urlMain = "http://druids.thecomicseries.com/"
 urlFirstPage = "http://druids.thecomicseries.com/comics/first/"
-nextTag.append("")
-nextAttr.append("")
-nextStr.append('')
-#urlBase.append('')
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append('next')
+urlBase.append('http://druids.thecomicseries.com')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
