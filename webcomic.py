@@ -378,7 +378,7 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #A Redtail's Dream
-display = False
+display = True
 comicname = "A Redtail's Dream"
 filename = "redtail"
 urlMain = "http://www.minnasundberg.fi/comic/recent.php"

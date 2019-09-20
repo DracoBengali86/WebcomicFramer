@@ -170,7 +170,7 @@ if __name__ == "__main__":
     urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
     nextTag.append("img")
     nextAttr.append("src")
-    nextStr.append(".*anext[.]jpg")
+    nextStr.append(".*anext.jpg")
     urlBase.append("http://www.minnasundberg.fi/comic/")
     nextLinkParent = True
     baseChange = False
