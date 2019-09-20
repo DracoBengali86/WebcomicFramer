@@ -56,6 +56,21 @@ urlFirstPage = "http://www.AvasDemon.com/pages.php#0001"
 totalpages = urlAvasDemon.urlBuild(urlFirstPage, filename, urlMain)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
+#Balazo
+display = True
+comicname = "Balazo - Stories in Pretty Pictures"
+filename = "balazo"
+urlMain = "http://balazo.net/"
+urlFirstPage = "http://balazo.net/2010/08/starting-tomorrow/"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Subnormality
 display = True
 comicname = "Subnromality"
@@ -130,6 +145,51 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+#Earthsong
+display = True
+comicname = "Earthsong"
+filename = "earthsong"
+urlMain = "http://earthsongsaga.com/index.php"
+urlFirstPage = "http://earthsongsaga.com/vol1/vol1cover.php"
+nextTag.append("a")
+nextAttr.append("title")
+nextStr.append("Next")
+urlBase.append("http://earthsongsaga.com")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Everblue
+display = True
+comicname = "Everblue"
+filename = "everblue"
+urlMain = "http://www.everblue-comic.com/"
+urlFirstPage = "http://www.everblue-comic.com/comic/1"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+urlBase.append("http://www.everblue-comic.com")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Furthia High
+display = True
+comicname = "Furthia High"
+filename = "furthia"
+urlMain = "http://furthiahigh.concessioncomic.com/"
+urlFirstPage = "http://furthiahigh.concessioncomic.com/index.php?pid=20080128"
+nextTag.append("img")
+nextAttr.append("alt")
+nextStr.append("Next")
+#urlBase.append('')
+nextLinkParent = True
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Greg
 display = True
 comicname = "Greg"
@@ -154,6 +214,111 @@ urlFirstPage = "http://halflightcomics.com/http:/halflightcomics.com/comic/chapt
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append('navi navi-next')
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Miamaska
+display = True
+comicname = "Miamaska"
+filename = "miamaska"
+urlMain = "http://miamaska.com/index.php"
+urlFirstPage = "http://miamaska.com/index.php?pn=0"
+nextTag.append("a")
+nextAttr.append("text")
+nextStr.append('Next')
+urlBase.append('http://miamaska.com/index.php')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Misfile
+display = True
+comicname = "Misfile"
+filename = "misfile"
+urlMain = "http://www.misfile.com/"
+urlFirstPage = "http://www.misfile.com/?date=2004-02-22"
+nextTag.append("img")
+nextAttr.append("alt")
+nextStr.append("Next Comic")
+urlBase.append("http://www.misfile.com")
+nextLinkParent = True
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Modest Medusa
+display = True
+comicname = "Modest Medusa"
+filename = "medusa"
+urlMain = "http://modestmedusa.com/"
+urlFirstPage = "http://modestmedusa.com/comic/christmas-eve-3/"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("comic-nav-base comic-nav-next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Red Moon Rising
+display = True
+comicname = "Red Moon Rising"
+filename = "redmoon"
+urlMain = "http://www.redmoonrising.org/"
+urlFirstPage = "http://www.redmoonrising.org/archive/red-moon-rising/"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Scout Crossing
+display = True
+comicname = "Scout Crossing"
+filename = "scout"
+urlMain = "http://scoutcrossing.net/"
+urlFirstPage = "http://scoutcrossing.net/comic/000-scoutcrossing/"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("navi navi-next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Think before you Think
+display = True
+comicname = "Think Before You Think"
+filename = "think"
+urlMain = "http://thinkbeforeyouthink.net/"
+urlFirstPage = "http://thinkbeforeyouthink.net/?comic=20090612-coffee"
+nextTag.append("a")
+nextAttr.append("text")
+nextStr.append('Next >')
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Toilet Genie
+display = True
+comicname = "Toilet Genie"
+filename = "toilet"
+urlMain = "https://www.deviantart.com/blix-it/gallery/9792599/toilet-genie"
+urlFirstPage = "https://www.deviantart.com/blix-it/art/D-0-0-R-Toilet-Genie-001-118248100"
+nextTag.append("a")
+nextAttr.append("text")
+nextStr.append('Next')
 #urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
@@ -197,6 +362,36 @@ urlFirstPage = 'http://www.gogetaroomie.com/comic/and-so-it-begins'
 totalpages = urlRoomie.urlBuild(urlFirstPage, filename, urlMain)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
+#Sanda and Woo
+display = True
+comicname = "Sandra and Woo"
+filename = "sandra"
+urlMain = "http://www.sandraandwoo.com/"
+urlFirstPage = "http://www.sandraandwoo.com/2000/01/01/welcome-to-sandra-and-woo/"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#A Redtail's Dream
+display = False
+comicname = "A Redtail's Dream"
+filename = "redtail"
+urlMain = "http://www.minnasundberg.fi/comic/recent.php"
+urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
+nextTag.append("img")
+nextAttr.append("src")
+nextStr.append(".*anext[.]jpg")
+urlBase.append("http://www.minnasundberg.fi/comic/")
+nextLinkParent = True
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Stand Still, Stay Silent
 display = True
 comicname = "Stand Still. Stay Silent"
@@ -238,6 +433,36 @@ nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
 #urlBase.append("")  # full url for next page is in href
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Twilight Lady
+display = True
+comicname = "Twilight Lady"
+filename = "twilight"
+urlMain = "http://corridorcomix.com/twilightlady/"
+urlFirstPage = "http://corridorcomix.com/twilightlady/comic/the-secret-of-cass-corridor-2/"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("comic-nav-base comic-nav-next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Corridor Realms - Twilight Lady
+display = True
+comicname = "Corridor Realms - (new) Twilight Lady"
+filename = "twilightnew"
+urlMain = "http://corridorcomix.com/"
+urlFirstPage = "http://corridorcomix.com/comic/twilight-ladys-house-concert/"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("comic-nav-base comic-nav-next")
+#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))

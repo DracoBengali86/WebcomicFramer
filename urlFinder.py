@@ -8,6 +8,9 @@ import re
 import bs4  # beautifulSoup4
 from htmlCreator import buildComicPage
 
+# Set user agent, as requests default agent is blocked in some cases
+# This agent is a "Linux-based PC using a Firefox browser" from https://deviceatlas.com/blog/list-of-user-agent-strings
+sUserAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1'
 
 def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
              searchend = '.us.k12.edu', baseChanges = False):
@@ -56,7 +59,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
         # Download page
         print('Finding page %s...' %url)
         try:
-            res = requests.get(url)
+            res = requests.get(url, headers={"User-Agent":sUserAgent})
         except requests.ConnectionError as err:
             try:
                 res = requests.get(url, verify=False)
@@ -122,6 +125,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             if nextPage == "" or nextPage is None:
                 nextPage = 'zzzbreak'
 
+        # Prevent loop if "Next" comic is the same as the last comic
         urlPrev = url
 
         if baseChanges and nextPage.startswith("http"):
@@ -141,6 +145,10 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 buildComicPage(pagecount, filename)
                 return pagecount
         else:
+            # Trim leading ".." from certain partial links (EX. "../vol1/1.php")
+            if nextPage.startswith("../"):
+                nextPage = nextPage[2:]
+
             url = urlnextBase + nextPage
 
     pagecount = pagecount + i
@@ -156,15 +164,15 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comicname = "Depths Of My Empty Soul"
-    filename = "Depths"
-    urlMain = "http://depthsofmyemptysoul.smackjeeves.com/"
-    urlFirstPage = "http://depthsofmyemptysoul.smackjeeves.com/mature.php?ref=http://depthsofmyemptysoul.smackjeeves.com/comics/1629357/welcome/"
-    nextTag.append("a")
-    nextAttr.append("text")
-    nextStr.append('Next >')
-    urlBase.append('http://depthsofmyemptysoul.smackjeeves.com/mature.php?ref=')
-    nextLinkParent = False
+    comicname = "A Redtail's Dream"
+    filename = "redtail"
+    urlMain = "http://www.minnasundberg.fi/comic/recent.php"
+    urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
+    nextTag.append("img")
+    nextAttr.append("src")
+    nextStr.append(".*anext[.]jpg")
+    urlBase.append("http://www.minnasundberg.fi/comic/")
+    nextLinkParent = True
     baseChange = False
 
     os.makedirs('webcomic', exist_ok=True)
