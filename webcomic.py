@@ -2,10 +2,11 @@ import os
 #import webbrowser
 import urlAvasDemon
 import urlCAD
-import urlTwoKinds
+import urlEarthsong
 import urlLFG
 import urlQ2Q
 import urlRoomie
+import urlTwoKinds
 import urlFinder
 from htmlCreator import buildMainPage
 
@@ -151,12 +152,13 @@ comicname = "Earthsong"
 filename = "earthsong"
 urlMain = "http://earthsongsaga.com/index.php"
 urlFirstPage = "http://earthsongsaga.com/vol1/vol1cover.php"
-nextTag.append("a")
-nextAttr.append("title")
-nextStr.append("Next")
-urlBase.append("http://earthsongsaga.com")
-nextLinkParent = False
-totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+nextTag.append("li")
+nextAttr.append("id")
+nextStr.append("next")
+nextTag.append("td")
+nextAttr.append("width")
+nextStr.append("71")
+totalpages = urlEarthsong.urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 

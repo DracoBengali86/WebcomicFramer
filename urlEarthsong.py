@@ -1,7 +1,3 @@
-# Start with code from urlXKCD, and modify as necessary
-# urlSubnorm uses re
-# Will likely have to add more variables
-
 import requests
 import os
 import re
@@ -12,11 +8,10 @@ from htmlCreator import buildComicPage
 # This agent is a "Linux-based PC using a Firefox browser" from https://deviceatlas.com/blog/list-of-user-agent-strings
 sUserAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1'
 
-def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
-             searchend = '.us.k12.edu', baseChanges = False):
+
+def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.us.k12.edu'):
     url = urlFirstPage
     urlPrev = ''
-    numBases = len(urlBases)
     writeURL = True
     pagecount = 0
     i = 0
@@ -33,21 +28,6 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             if pagecount > 0:
                 writeURL = False
                 url = lines[pagecount - 1]
-
-    if numBases < 1:
-        print("No Base defined, assuming full URL in next link")
-        urlBases.append("")
-        urlnextBase = urlBases[0]
-        numBases = 1
-    elif not writeURL and numBases > 1:
-        m = 0
-        while m < numBases:
-            if url.startswith(urlBases[m]):
-                urlnextBase = urlBases[m]
-                break
-            m += 1
-    else:
-        urlnextBase = urlBases[0]
 
     if len(nextTag) != len(nextAttr) or len(nextTag) != len(nextStr):
         print("Search conditions length mismatch")
@@ -117,35 +97,28 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
         if nextTemp is None:
             nextPage = 'zzzbreak'
         else:
-            if nextLinkParent:
-                nextLink = nextTemp.parent
-            else:
-                nextLink = nextTemp
+            nextLink = nextTemp.findChild()
             nextPage = nextLink.get('href')
             if nextPage == "" or nextPage is None:
                 nextPage = 'zzzbreak'
 
+        # create base from current url by trimming everything after last "/"
+        index = url.rfind("/")
+        urlnextBase = url[:index]
+
+        if nextPage.startswith(".."):
+            nextPage = nextPage[2:]
+            index = urlnextBase.rfind("/")
+            urlnextBase = urlnextBase[:index]
+
+        if not nextPage.startswith("/"):
+            urlnextBase = urlnextBase + "/"
+
+
         # Prevent loop if "Next" comic is the same as the last comic
         urlPrev = url
 
-        if baseChanges and nextPage.startswith("http"):
-            k = 0
-            while k < numBases:
-                if nextPage.startswith(urlBases[k]):
-                    print("New base found: " + urlBases[k])
-                    urlnextBase = urlBases[k]
-                    url = nextPage
-                    break
-                k += 1
-            if k == numBases:
-                print("No matching base URL. Cannot proceed till new base is added to array")
-                print("Previous base: " + urlnextBase)
-                print("Latest url (not added): " + nextPage)
-                print("Current Pagecout: " + str(pagecount))
-                buildComicPage(pagecount, filename)
-                return pagecount
-
-            url = urlnextBase + nextPage
+        url = urlnextBase + nextPage
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
@@ -159,17 +132,16 @@ if __name__ == "__main__":
     nextTag = []
     nextAttr = []
     nextStr = []
-    urlBase = []
-    comicname = "A Redtail's Dream"
-    filename = "redtail"
-    urlMain = "http://www.minnasundberg.fi/comic/recent.php"
-    urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
-    nextTag.append("img")
-    nextAttr.append("src")
-    nextStr.append(".*anext.jpg")
-    urlBase.append("http://www.minnasundberg.fi/comic/")
-    nextLinkParent = True
-    baseChange = False
+    comicname = "Earthsong"
+    filename = "earthsong"
+    urlMain = "http://earthsongsaga.com/index.php"
+    urlFirstPage = "http://earthsongsaga.com/vol1/vol1cover.php"
+    nextTag.append("li")
+    nextAttr.append("id")
+    nextStr.append("next")
+    nextTag.append("td")
+    nextAttr.append("width")
+    nextStr.append("71")
 
     os.makedirs('webcomic', exist_ok=True)
-    urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)
+    urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr)
