@@ -93,6 +93,23 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+
+# Will need something like Avas Demon for this (completely jQuery-button events for next page)
+#Carciphona
+display = False
+comicname = "Carciphona"
+filename = "carciphona"
+# urlMain = "https://carciphona.com/"
+# urlFirstPage = "https://carciphona.com/read.php#volume=1&chapter=1&page=-1&lang=en"
+# nextTag.append("a")
+# nextAttr.append("class")
+# nextStr.append("comic-nav-base comic-nav-next")
+# nextLinkParent = False
+# totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Ctrl+Alt+Del
 display = True
 comicname = "Ctrl+Alt+Del"
@@ -101,6 +118,21 @@ urlMain = "http://cad-comic.com/"
 urlFirstPage = "http://cad-comic.com/comic/nice-melon/"
 totalpages = urlCAD.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#D20 Monkey
+display = True
+comicname = "d20 Monkey"
+filename = "d20"
+urlMain = "http://www.d20monkey.com/"
+urlFirstPage = "http://www.d20monkey.com/comic/welcome/"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("navi comic-nav-next navi-next")
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #Devilbear
 display = True
@@ -322,6 +354,20 @@ nextTag.append("a")
 nextAttr.append("text")
 nextStr.append('Next')
 #urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Two Guys and Guy
+display = True
+comicname = "Two Guys and Guy"
+filename = "twoguys"
+urlMain = "http://www.twogag.com/"
+urlFirstPage = "http://twogag.com/archives/4"
+nextTag.append("a")  # use a, rel "next" if this doesn't work
+nextAttr.append("class")
+nextStr.append("cc-next")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))

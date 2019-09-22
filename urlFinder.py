@@ -145,7 +145,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 buildComicPage(pagecount, filename)
                 return pagecount
 
-            url = urlnextBase + nextPage
+        url = urlnextBase + nextPage
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
@@ -160,15 +160,15 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comicname = "A Redtail's Dream"
-    filename = "redtail"
-    urlMain = "http://www.minnasundberg.fi/comic/recent.php"
-    urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
-    nextTag.append("img")
-    nextAttr.append("src")
-    nextStr.append(".*anext.jpg")
-    urlBase.append("http://www.minnasundberg.fi/comic/")
-    nextLinkParent = True
+    comicname = "d20 Monkey"
+    filename = "d20"
+    urlMain = "http://www.d20monkey.com/"
+    urlFirstPage = "http://www.d20monkey.com/comic/welcome/"
+    nextTag.append("a")
+    nextAttr.append("class")
+    nextStr.append("navi comic-nav-next navi-next")
+    # urlBase.append('')
+    nextLinkParent = False
     baseChange = False
 
     os.makedirs('webcomic', exist_ok=True)
