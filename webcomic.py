@@ -163,6 +163,21 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+#Dreamscar
+display = True
+comicname = "dream*scar"
+filename = "dreamscar"
+urlMain = "https://dream-scar.net/"
+urlFirstPage = "https://dream-scar.net/?id=1"
+nextTag.append("a")
+nextAttr.append("title")
+nextStr.append("next")
+urlBase.append("https://dream-scar.net/")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Druids
 display = True
 comicname = "Druids (Mature)"
@@ -293,6 +308,21 @@ urlFirstPage = "http://modestmedusa.com/comic/christmas-eve-3/"
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("comic-nav-base comic-nav-next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Next Town Over
+display = True
+comicname = "Next Town Over"
+filename = "nexttown"
+urlMain = "http://www.nexttownover.net/"
+urlFirstPage = "http://www.nexttownover.net/?p=4"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("navi navi-next")
 #urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
