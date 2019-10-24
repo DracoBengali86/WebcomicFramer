@@ -55,7 +55,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
     searchLength = len(nextTag)
 
     # Stop if the next url is the "searchend", or no next URL is found, or next URL is the same as the previous URL
-    while not url.endswith(searchend) and not url.endswith('zzzbreak') and urlPrev != url:
+    while not url.endswith(searchend) and not url.endswith('zzzENDzzz') and urlPrev != url:
         # Download page
         print('Finding page %s...' %url)
         try:
@@ -115,7 +115,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             j += 1
 
         if nextTemp is None:
-            nextPage = 'zzzbreak'
+            nextPage = 'zzzENDzzz'
         else:
             if nextLinkParent:
                 nextLink = nextTemp.parent
@@ -123,7 +123,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 nextLink = nextTemp
             nextPage = nextLink.get('href')
             if nextPage == "" or nextPage is None:
-                nextPage = 'zzzbreak'
+                nextPage = 'zzzENDzzz'
 
         # Prevent loop if "Next" comic is the same as the last comic
         urlPrev = url

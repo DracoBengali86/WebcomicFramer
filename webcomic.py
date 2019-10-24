@@ -1,6 +1,7 @@
 import os
 #import webbrowser
 import urlAvasDemon
+import urlBladeBunny
 import urlCAD
 import urlEarthsong
 import urlLFG
@@ -55,6 +56,17 @@ filename = "AvasDemon"
 urlMain = "http://www.AvasDemon.com"
 urlFirstPage = "http://www.AvasDemon.com/pages.php#0001"
 totalpages = urlAvasDemon.urlBuild(urlFirstPage, filename, urlMain)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#Blade Bunny
+display = True
+comicname = "Blade Bunny"
+filename = "BladeBunny"
+urlMain = "https://readcomiconline.to/Comic/Blade-Bunny"
+urlFirstPage = "https://readcomiconline.to/Comic/Blade-Bunny/Issue-1?id=42534"
+urlVol1End = "https://readcomiconline.to/Comic/Blade-Bunny/Issue-5?id=87724#29"
+urlVol2 = "https://readcomiconline.to/Comic/Blade-Bunny-Vol-2/Issue-1?id=94715"
+totalpages = urlBladeBunny.urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 #Balazo
@@ -324,6 +336,21 @@ nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("navi navi-next")
 #urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Questionable Content
+display = True
+comicname = "Questionable Content"
+filename = "questionable"
+urlMain = "https://www.questionablecontent.net/"
+urlFirstPage = "https://www.questionablecontent.net/view.php?comic=1"
+nextTag.append("a")
+nextAttr.append("text")
+nextStr.append('Next')
+urlBase.append('https://www.questionablecontent.net/')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))

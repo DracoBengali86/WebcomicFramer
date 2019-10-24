@@ -35,7 +35,7 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.u
     searchLength = len(nextTag)
 
     # Stop if the next url is the "searchend", or no next URL is found, or next URL is the same as the previous URL
-    while not url.endswith(searchend) and not url.endswith('zzzbreak') and urlPrev != url:
+    while not url.endswith(searchend) and not url.endswith('zzzENDzzz') and urlPrev != url:
         # Download page
         print('Finding page %s...' %url)
         try:
@@ -95,12 +95,12 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.u
             j += 1
 
         if nextTemp is None:
-            nextPage = 'zzzbreak'
+            nextPage = 'zzzENDzzz'
         else:
             nextLink = nextTemp.findChild()
             nextPage = nextLink.get('href')
             if nextPage == "" or nextPage is None:
-                nextPage = 'zzzbreak'
+                nextPage = 'zzzENDzzz'
 
         # create base from current url by trimming everything after last "/"
         index = url.rfind("/")

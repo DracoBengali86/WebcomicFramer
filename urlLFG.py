@@ -24,7 +24,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
                 writeURL = False
                 url = lines[pagecount - 1]
 
-    while not url.endswith('zzzbreak'):  # on latest page url under 'Next' button ends with '#'
+    while not url.endswith('zzzENDzzz'):  # on latest page url under 'Next' button ends with '#'
         # Download page
         print('Finding page %s...' %url)
         try:
@@ -65,7 +65,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
             j += 1
 
         if nextTemp is None:
-            nextLink = 'https://www.lfg.co/page/zzzbreak'
+            nextLink = 'https://www.lfg.co/page/zzzENDzzz'
         else:
             nextLink = nextTemp.get('href')
 
