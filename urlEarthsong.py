@@ -27,7 +27,11 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.u
             pagecount = len(lines)
             if pagecount > 0:
                 writeURL = False
-                url = lines[pagecount - 1]
+                if lines[pagecount - 1] == "zzzENDzzz":
+                    pagecount -= 1
+                    url = lines[pagecount]
+                else:
+                    url = lines[pagecount - 1]
 
     if len(nextTag) != len(nextAttr) or len(nextTag) != len(nextStr):
         print("Search conditions length mismatch")

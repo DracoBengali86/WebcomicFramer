@@ -30,7 +30,11 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
             pagecount = len(lines)
             if pagecount > 0:
                 writeURL = False
-                url = lines[pagecount - 1]
+                if lines[pagecount - 1] == "zzzENDzzz":
+                    pagecount -= 1
+                    url = lines[pagecount]
+                else:
+                    url = lines[pagecount - 1]
 
         currentDate = datetime.now()
         fileDate = datetime.fromtimestamp(os.path.getmtime("webcomic/" + filename))

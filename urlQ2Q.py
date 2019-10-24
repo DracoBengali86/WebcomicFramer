@@ -22,7 +22,11 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
             pagecount = len(lines)
             if pagecount > 0:
                 writeURL = False
-                url = lines[pagecount - 1]
+                if lines[pagecount - 1] == "zzzENDzzz":
+                    pagecount -= 1
+                    url = lines[pagecount]
+                else:
+                    url = lines[pagecount - 1]
 
     while not url.endswith('zzzENDzzz'):  # on latest page url under 'Next' button ends with '#'
         # Download page

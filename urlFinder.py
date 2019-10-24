@@ -32,7 +32,11 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
             pagecount = len(lines)
             if pagecount > 0:
                 writeURL = False
-                url = lines[pagecount - 1]
+                if lines[pagecount - 1] == "zzzENDzzz":
+                    pagecount -= 1
+                    url = lines[pagecount]
+                else:
+                    url = lines[pagecount - 1]
 
     if numBases < 1:
         print("No Base defined, assuming full URL in next link")
@@ -160,15 +164,15 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comicname = "d20 Monkey"
-    filename = "d20"
-    urlMain = "http://www.d20monkey.com/"
-    urlFirstPage = "http://www.d20monkey.com/comic/welcome/"
-    nextTag.append("a")
-    nextAttr.append("class")
-    nextStr.append("navi comic-nav-next navi-next")
-    # urlBase.append('')
-    nextLinkParent = False
+    comicname = "A Redtail's Dream"
+    filename = "redtail"
+    urlMain = "http://www.minnasundberg.fi/comic/recent.php"
+    urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
+    nextTag.append("img")
+    nextAttr.append("src")
+    nextStr.append(".*anext[.]jpg")
+    urlBase.append("http://www.minnasundberg.fi/comic/")
+    nextLinkParent = True
     baseChange = False
 
     os.makedirs('webcomic', exist_ok=True)
