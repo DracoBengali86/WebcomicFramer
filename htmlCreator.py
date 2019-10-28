@@ -28,7 +28,7 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '</head>\n' +
                    '<body style="height:100%" onload="updateProgress()">\n' +
                    '<div style="left:8px; right:12px; height:65px; background-color: grey">\n' +
-                   '<input type="file" name="names[]" id="name" />\n' +
+                   '<input type="file" name="names[]" id="name" accept=".json" />\n' +
                    '<button onclick="restoredata()" type="button">Upload Progress</button>\n' +
                    '<p />\n' +
                    '<button onclick="backupdata()" type="button">Save Progress</button>\n' +
@@ -53,10 +53,10 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '</html>\n' +
                    '<script type="text/javascript">\n' +
                    'function updateProgress() {\n' +
-                   '  for (var i = 0; i < localStorage.length; i++) {\n' +
-                   '    var key = localStorage.key(i)\n' +
+                   '  for (var i = 0; i < sessionStorage.length; i++) {\n' +
+                   '    var key = sessionStorage.key(i)\n' +
                    '    var progressBar = document.getElementById(key);\n' +
-                   '    var myposition = localStorage.getItem(key);\n' +
+                   '    var myposition = sessionStorage.getItem(key);\n' +
                    '    \n' +
                    '	if (progressBar !== null) {\n' +
                    '      progressBar.value = myposition;\n' +
@@ -85,16 +85,16 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '  //console.log(save)\n' +
                    '  for (var i in save) {\n' +
                    '    //console.log(\'Key \' + i + \': \' + save[i])\n' +
-                   '    window.localStorage.setItem(i, save[i]);\n' +
+                   '    window.sessionStorage.setItem(i, save[i]);\n' +
                    '  }\n' +
                    '  window.location.reload(false);\n' +
                    '}\n' +
                    '\n' +
                    'function backupdata() {\n' +
                    '  save = {}\n' +
-                   '  for (var i = 0; i < localStorage.length; i++) {\n' +
-                   '    var key = localStorage.key(i)\n' +
-                   '    save[key] = localStorage.getItem(key);\n' +
+                   '  for (var i = 0; i < sessionStorage.length; i++) {\n' +
+                   '    var key = sessionStorage.key(i)\n' +
+                   '    save[key] = sessionStorage.getItem(key);\n' +
                    '    console.log(save)\n' +
                    '  }\n' +
                    '  var a = window.document.createElement(\'a\');\n' +
@@ -188,7 +188,7 @@ def comicscripts(htmlfile, pagecount, filename, reloadrequired=False):
                    '  progressBar.value = myposition;\n' +
                    '  progressBar.getElementsByTagName(\'span\')[0].textContent = myposition\n' +
                    '  document.getElementById(\'page\').innerHTML = "Page " + myposition;\n' +
-                   '  localStorage.setItem(\'' + filename + '\', myposition);\n' +
+                   '  sessionStorage.setItem(\'' + filename + '\', myposition);\n' +
                    '  myframe.src = comics[myposition];\n')
 
     if (reloadrequired):
@@ -196,7 +196,7 @@ def comicscripts(htmlfile, pagecount, filename, reloadrequired=False):
 
     htmlfile.write('}\n' +
                    'function loadVars() {\n' +
-                   '  myposition = localStorage.getItem(\'' + filename + '\');\n' +
+                   '  myposition = sessionStorage.getItem(\'' + filename + '\');\n' +
                    '  if (myposition == null) {\n' +
                    '    myposition = 1;\n' +
                    '  } else {\n' +
