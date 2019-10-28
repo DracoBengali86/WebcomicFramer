@@ -59,6 +59,7 @@ totalpages = urlAvasDemon.urlBuild(urlFirstPage, filename, urlMain)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 #Blade Bunny
+#webpage doesn't like to reload...need to fix that
 display = True
 comicname = "Blade Bunny"
 filename = "BladeBunny"
