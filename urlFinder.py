@@ -20,6 +20,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
     writeURL = True
     pagecount = 0
     i = 0
+    isbutton = False
 
     if os.path.isfile(os.path.join('webcomic', filename)):
         fileExists = True
@@ -112,6 +113,11 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                     nextTemp = soup.find(nextTag[j], class_=nextStr[j])
                 else:
                     nextTemp = soup.find(nextTag[j], {nextAttr[j] : re.compile(nextStr[j])})
+
+                if nextTag[j] == 'button':
+                    isbutton = True
+                else:
+                    isbutton = False
             else:
                 print("next link couldn't be found")
                 print("last found page: " + url)
@@ -125,7 +131,12 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 nextLink = nextTemp.parent
             else:
                 nextLink = nextTemp
-            nextPage = nextLink.get('href')
+
+            if isbutton:
+                nextPage = nextLink.get('onclick')[15:-1]
+            else:
+                nextPage = nextLink.get('href')
+
             if nextPage == "" or nextPage is None:
                 nextPage = 'zzzENDzzz'
 
@@ -164,15 +175,15 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comicname = "A Redtail's Dream"
-    filename = "redtail"
-    urlMain = "http://www.minnasundberg.fi/comic/recent.php"
-    urlFirstPage = "http://www.minnasundberg.fi/comic/page00.php"
-    nextTag.append("img")
-    nextAttr.append("src")
-    nextStr.append(".*anext[.]jpg")
-    urlBase.append("http://www.minnasundberg.fi/comic/")
-    nextLinkParent = True
+    comicname = "zFF Hereafter"
+    filename = "hereafter"
+    urlMain = "https://www.fanfiction.net/s/12711718/1/Hereafter"
+    urlFirstPage = "https://www.fanfiction.net/s/12711718/1/Hereafter"
+    nextTag.append("button")
+    nextAttr.append("text")
+    nextStr.append("Next >")
+    urlBase.append('https://www.fanfiction.net')
+    nextLinkParent = False
     baseChange = False
 
     os.makedirs('webcomic', exist_ok=True)

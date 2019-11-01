@@ -621,6 +621,114 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
+#FanFiction Stories
+
+#FF Hereafter
+display = True
+comicname = "zFF Hereafter"
+filename = "hereafter"
+urlMain = "https://www.fanfiction.net/s/12711718/1/Hereafter"
+urlFirstPage = "https://www.fanfiction.net/s/12711718/1/Hereafter"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF Love is a Kind of War
+display = True
+comicname = "zFF Love is a Kind of War"
+filename = "loveiswar"
+urlMain = "https://www.fanfiction.net/s/8764528/1/Love-is-a-Kind-of-War"
+urlFirstPage = "https://www.fanfiction.net/s/8764528/1/Love-is-a-Kind-of-War"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF Monster Falls
+display = True
+comicname = "zFF Monster Falls"
+filename = "monsterfalls"
+urlMain = "https://www.fanfiction.net/s/11126659/1/Monster-Falls"
+urlFirstPage = "https://www.fanfiction.net/s/11126659/1/Monster-Falls"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF One Hundred Kisses
+display = True
+comicname = "zFF One Hundred Kisses"
+filename = "100kisses"
+urlMain = "https://www.fanfiction.net/s/11947059/1/One-Hundred-Kisses"
+urlFirstPage = "https://www.fanfiction.net/s/11947059/1/One-Hundred-Kisses"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF Recovery and Resolutions
+display = True
+comicname = "zFF Recovery and Resolutions"
+filename = "recovery"
+urlMain = "https://www.fanfiction.net/s/11958300/1/Recovery-and-Resolutions"
+urlFirstPage = "https://www.fanfiction.net/s/11958300/1/Recovery-and-Resolutions"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF The fall of a king
+display = True
+comicname = "zFF The Fall of a King"
+filename = "kingfall"
+urlMain = "https://www.fanfiction.net/s/11932949/1/The-fall-of-a-king"
+urlFirstPage = "https://www.fanfiction.net/s/11932949/1/The-fall-of-a-king"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF The True Self
+display = True
+comicname = "zFF The True Self"
+filename = "trueself"
+urlMain = "https://www.fanfiction.net/s/11888755/1/The-True-Self"
+urlFirstPage = "https://www.fanfiction.net/s/11888755/1/The-True-Self"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+
 #Blocked by not allowing cross-origin framing
 
 #WebToons - X-Frame extension doesn't allow these to work, more work required
