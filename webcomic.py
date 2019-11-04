@@ -151,6 +151,21 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 display = True
 comicname = "Devilbear: The Grimoires of Bearalzebub"
 filename = "Devilbear"
+urlMain = "http://www.thedevilbear.com/index.html"
+urlFirstPage = "http://www.thedevilbear.com/comics.php?p=1"
+nextTag.append("a")
+nextAttr.append("id")
+nextStr.append('cg_next')
+nextLinkParent = False
+urlBase.append('http://www.thedevilbear.com/comics.php')
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Devilbear Shorts
+display = True
+comicname = "Devilbear: The Shorts of Bearalzebub"
+filename = "DevilbearShorts"
 urlMain = "http://www.thedevilbear.com/"
 urlFirstPage = "http://www.thedevilbear.com/b/comic/its-for-you/"
 nextTag.append("a")
