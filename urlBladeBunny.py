@@ -49,7 +49,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
     try:
         driver = webdriver.Chrome()
         driver.get(url)
-        delay = 120  # seconds
+        delay = 240  # seconds
         try:
             WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'btnNext')))
         except TimeoutException:

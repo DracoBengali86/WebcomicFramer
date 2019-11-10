@@ -713,6 +713,51 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+#FF The Savage Dark
+display = True
+comicname = "zFF The Savage Dark"
+filename = "savagedark"
+urlMain = "https://www.fanfiction.net/s/12086054/1/The-Savage-Dark"
+urlFirstPage = "https://www.fanfiction.net/s/12086054/1/The-Savage-Dark"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF A Snowstorm of Secrets
+display = True
+comicname = "zFF A Snowstorm of Secrets"
+filename = "snowstormsecrets"
+urlMain = "https://www.fanfiction.net/s/10023494/1/A-Snowstorm-of-Secrets"
+urlFirstPage = "https://www.fanfiction.net/s/10023494/1/A-Snowstorm-of-Secrets"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#FF Swaw Mi Krr
+display = True
+comicname = "zFF Swaw Mi Krr"
+filename = "swawmikrr"
+urlMain = "https://www.fanfiction.net/s/7121323/1/Swaw-M%C3%AC-Krr"
+urlFirstPage = "https://www.fanfiction.net/s/7121323/1/Swaw-M%C3%AC-Krr"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #FF The fall of a king
 display = True
 comicname = "zFF The Fall of a King"
