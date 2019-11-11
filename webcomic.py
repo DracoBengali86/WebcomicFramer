@@ -638,6 +638,21 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #FanFiction Stories
 
+#FF Four Armed Bride
+display = True
+comicname = "zFF Four Armed Bride"
+filename = "fourarmed"
+urlMain = "https://www.fanfiction.net/s/12103554/1/Four-Armed-Bride"
+urlFirstPage = "https://www.fanfiction.net/s/12103554/1/Four-Armed-Bride"
+nextTag.append("button")
+nextAttr.append("text")
+nextStr.append("Next >")
+urlBase.append('https://www.fanfiction.net')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #FF Hereafter
 display = True
 comicname = "zFF Hereafter"
