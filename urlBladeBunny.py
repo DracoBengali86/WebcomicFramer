@@ -41,8 +41,13 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
         fileAge = currentDate - fileDate
 
         # If file is less then a week old, don't update it.
-        if fileAge.days < 7:
+        if fileAge.days < 7 and not url.endswith('zzzENDzzz'):
             print("Latest search less then 7 days ago, rebuilding page (No search performed)")
+            buildComicPage(pagecount, filename, True)
+            return pagecount
+        # If end of comic has been reached, don't search reguardless
+        elif url.endswith('zzzENDzzz'):
+            print("End of Comic flag found, no search performed")
             buildComicPage(pagecount, filename, True)
             return pagecount
 
