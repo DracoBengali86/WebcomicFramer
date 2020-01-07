@@ -85,6 +85,21 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+#The Bully's Bully
+display = True
+comicname = "The Bully's Bully"
+filename = "BullysBully"
+urlMain = "https://web.archive.org/web/20160904004355/http://bullysbully.com:80/"
+urlFirstPage = "https://web.archive.org/web/20160902045430/http://bullysbully.com/comic/chapter-1/the-bullys-bully-cover-2/"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("comic-nav-base comic-nav-next")
+#urlBase.append('')
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Subnormality
 display = True
 comicname = "Subnromality"
@@ -402,6 +417,21 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+#Spinnerette
+display = True
+comicname = "Spinnerette"
+filename = "spinnnerette"
+urlMain = "https://www.spinnyverse.com/"
+urlFirstPage = "https://www.spinnyverse.com/comic/02-09-2010"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+#urlBase.append("")
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 #Think before you Think
 display = True
 comicname = "Think Before You Think"
@@ -554,6 +584,21 @@ nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
 #urlBase.append("")  # full url for next page is in href
+nextLinkParent = False
+totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
+#Tripp (web archive)
+display = True
+comicname = "Tripp"
+filename = "tripp"
+urlMain = "https://web.archive.org/web/20150506105057/http://www.trippcomic.com/home"
+urlFirstPage = "https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/poet-b5e016f"
+nextTag.append("a")
+nextAttr.append("rel")
+nextStr.append("next")
+urlBase.append("https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
@@ -808,6 +853,8 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 #WebToons - X-Frame extension doesn't allow these to work, more work required
 #maybe seperate program (using selenium?) to drive browser?
+#best change is making page of links and allow manual setting/marking
+
 #The Angel in the Forest
 display = False
 comicname = "The Angel in the Forest"
@@ -835,6 +882,16 @@ filename = "Soleil"
 urlMain = "http://www.webtoons.com/en/challenge/soleil/list?title_no=192734"
 urlFirstPage = "http://www.webtoons.com/en/challenge/soleil/intro/viewer?title_no=192734&episode_no=1"
 #totalpages = urlSoleil.urlBuild(urlFirstPage, filename)
+totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#Space Vixen
+display = False
+comicname = "Space Vixen - Deep Space K9"
+filename = "SpaceVixen"
+urlMain = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/list?title_no=207049"
+urlFirstPage = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/episode-0-prologue-pyramid-scheme/viewer?title_no=207049&episode_no=1"
+#totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
@@ -870,7 +927,6 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 
 #Possibly defunct/dead
-
 
 #Home
 display = False
