@@ -4,11 +4,12 @@ import urlAvasDemon
 import urlBladeBunny
 import urlCAD
 import urlEarthsong
+import urlFinder
 import urlLFG
 import urlQ2Q
 import urlRoomie
 import urlTwoKinds
-import urlFinder
+import urlWebToons
 from htmlCreator import buildMainPage
 
 os.makedirs('webcomic', exist_ok=True)
@@ -52,7 +53,7 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 #Ava's Demon
 display = True
 comicname = "Ava's Demon"
-filename = "AvasDemon"
+filename = "avasDemon"
 urlMain = "http://www.AvasDemon.com"
 urlFirstPage = "http://www.AvasDemon.com/pages.php#0001"
 totalpages = urlAvasDemon.urlBuild(urlFirstPage, filename, urlMain)
@@ -62,7 +63,7 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 #webpage doesn't like to reload...need to fix that
 display = True
 comicname = "Blade Bunny"
-filename = "BladeBunny"
+filename = "bladeBunny"
 urlMain = "https://readcomiconline.to/Comic/Blade-Bunny"
 urlFirstPage = "https://readcomiconline.to/Comic/Blade-Bunny/Issue-1?id=42534"
 urlVol1End = "https://readcomiconline.to/Comic/Blade-Bunny/Issue-5?id=87724#29"
@@ -88,7 +89,7 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 #The Bully's Bully
 display = True
 comicname = "The Bully's Bully"
-filename = "BullysBully"
+filename = "bullysBully"
 urlMain = "https://web.archive.org/web/20160904004355/http://bullysbully.com:80/"
 urlFirstPage = "https://web.archive.org/web/20160902045430/http://bullysbully.com/comic/chapter-1/the-bullys-bully-cover-2/"
 nextTag.append("a")
@@ -103,7 +104,7 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 #Subnormality
 display = True
 comicname = "Subnromality"
-filename = "Subnormality"
+filename = "subnormality"
 urlMain = "http://www.viruscomix.com/subnormality.html"
 urlFirstPage = "http://www.viruscomix.com/page324.html"
 # search 1
@@ -507,7 +508,7 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 #Can be used with an extension that makes browser ignore X-Frame options EX: Ignore X-Frame-Options for Firefox
 display = True
 comicname = "Go Get a Roomie! (Mature) (Requires X-Frame option extension)"
-filename = "Roomie"
+filename = "roomie"
 urlMain = "http://www.gogetaroomie.com/"
 urlFirstPage = 'http://www.gogetaroomie.com/comic/and-so-it-begins'
 totalpages = urlRoomie.urlBuild(urlFirstPage, filename, urlMain)
@@ -858,71 +859,91 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 #The Angel in the Forest
 display = False
 comicname = "The Angel in the Forest"
-filename = "AngelForest"
-urlMain = "http://www.webtoons.com/en/challenge/the-angel-in-the-forest/list?title_no=230887"
-urlFirstPage = "http://www.webtoons.com/en/challenge/the-angel-in-the-forest/indebted-babysitter/viewer?title_no=230887&episode_no=1"
-#totalpages = urlAngelForest.urlBuild(urlFirstPage, filename)
-totalpages = 0
-comiclist.append(Webcomic(comicname, filename, totalpages, display))
-
-#Seed
-display = False
-comicname = "Seed"
-filename = "Seed"
-urlMain = "http://www.webtoons.com/en/sf/seed/list?title_no=1480"
-urlFirstPage = "http://www.webtoons.com/en/sf/seed/prologue/viewer?title_no=1480&episode_no=1"
-#totalpages = urlSeed.urlBuild(urlFirstPage, filename)
-totalpages = 0
-comiclist.append(Webcomic(comicname, filename, totalpages, display))
-
-#Soleil
-display = False
-comicname = "Soleil"
-filename = "Soleil"
-urlMain = "http://www.webtoons.com/en/challenge/soleil/list?title_no=192734"
-urlFirstPage = "http://www.webtoons.com/en/challenge/soleil/intro/viewer?title_no=192734&episode_no=1"
-#totalpages = urlSoleil.urlBuild(urlFirstPage, filename)
-totalpages = 0
-comiclist.append(Webcomic(comicname, filename, totalpages, display))
-
-#Space Vixen
-display = False
-comicname = "Space Vixen - Deep Space K9"
-filename = "SpaceVixen"
-urlMain = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/list?title_no=207049"
-urlFirstPage = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/episode-0-prologue-pyramid-scheme/viewer?title_no=207049&episode_no=1"
-#totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-totalpages = 0
+filename = "angelForest"
+urlMain = "https://www.webtoons.com/en/challenge/the-angel-in-the-forest/list?title_no=230887"
+urlFirstPage = "https://www.webtoons.com/en/challenge/the-angel-in-the-forest/indebted-babysitter/viewer?title_no=230887&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 #Flow
 display = False
 comicname = "Flow"
-filename = "Flow"
-urlMain = "http://www.webtoons.com/en/fantasy/flow/list?title_no=101"
-urlFirstPage = "http://www.webtoons.com/en/fantasy/flow/ep-0/viewer?title_no=101&episode_no=1"
-#totalpages = urlFlow.urlBuild(urlFirstPage, filename)
-totalpages = 0
+filename = "flow"
+urlMain = "https://www.webtoons.com/en/fantasy/flow/list?title_no=101"
+urlFirstPage = "https://www.webtoons.com/en/fantasy/flow/ep-0/viewer?title_no=101&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#Interspace Pirate Xuna
+display = False
+comicname = "Interspace"
+filename = "interspace"
+urlMain = "https://www.webtoons.com/en/challenge/interspace-pirate-xuna/list?title_no=282267"
+urlFirstPage = "https://www.webtoons.com/en/challenge/interspace-pirate-xuna/prologue/viewer?title_no=282267&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#LionHeart
+display = False
+comicname = "LionHeart"
+filename = "lionheart"
+urlMain = "https://www.webtoons.com/en/challenge/lionheart/list?title_no=312965"
+urlFirstPage = "https://www.webtoons.com/en/challenge/lionheart/ep-1/viewer?title_no=312965&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 #Lumine
 display = False
 comicname = "Lumine"
-filename = "Lumine"
-urlMain = "http://www.webtoons.com/en/drama/lumine/list?title_no=1022"
-urlFirstPage = "http://www.webtoons.com/en/drama/lumine/episode-1/viewer?title_no=1022&episode_no=1"
-#totalpages = urlLumine.urlBuild(urlFirstPage, filename)
-totalpages = 0
+filename = "lumine"
+urlMain = "https://www.webtoons.com/en/drama/lumine/list?title_no=1022"
+urlFirstPage = "https://www.webtoons.com/en/drama/lumine/episode-1/viewer?title_no=1022&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 #Rise from Ashes
 display = False
 comicname = "Rise from Ashes"
-filename = "RisefromAshes"
-urlMain = "http://www.webtoons.com/en/fantasy/rise-from-ashes/list?title_no=959"
-urlFirstPage = "http://www.webtoons.com/en/fantasy/rise-from-ashes/ep-1/viewer?title_no=959&episode_no=1"
-#totalpages = urlRisefromAshes.urlBuild(urlFirstPage, filename)
-totalpages = 0
+filename = "riseFromAshes"
+urlMain = "https://www.webtoons.com/en/fantasy/rise-from-ashes/list?title_no=959"
+urlFirstPage = "https://www.webtoons.com/en/fantasy/rise-from-ashes/ep-1/viewer?title_no=959&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#Seed
+display = False
+comicname = "Seed"
+filename = "seed"
+urlMain = "https://www.webtoons.com/en/sf/seed/list?title_no=1480"
+urlFirstPage = "https://www.webtoons.com/en/sf/seed/prologue/viewer?title_no=1480&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#Soleil
+display = False
+comicname = "Soleil"
+filename = "soleil"
+urlMain = "https://www.webtoons.com/en/fantasy/soleil/list?title_no=1823"
+urlFirstPage = "https://www.webtoons.com/en/fantasy/soleil/episode-1/viewer?title_no=1823&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
+comiclist.append(Webcomic(comicname, filename, totalpages, display))
+
+#Space Vixen
+display = False
+comicname = "Space Vixen - Deep Space K9"
+filename = "spaceVixen"
+urlMain = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/list?title_no=207049"
+urlFirstPage = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/episode-0-prologue-pyramid-scheme/viewer?title_no=207049&episode_no=1"
+totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
+#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 
