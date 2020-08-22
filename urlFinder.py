@@ -12,8 +12,9 @@ from htmlCreator import buildComicPage
 # This agent is a "Linux-based PC using a Firefox browser" from https://deviceatlas.com/blog/list-of-user-agent-strings
 sUserAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1'
 
+
 def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
-             searchend = '.us.k12.edu', baseChanges = False):
+             searchend='.us.k12.edu', baseChanges=False):
     url = urlFirstPage
     urlPrev = ''
     numBases = len(urlBases)
@@ -175,14 +176,13 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comicname = "zFF Hereafter"
-    filename = "hereafter"
-    urlMain = "https://www.fanfiction.net/s/12711718/1/Hereafter"
-    urlFirstPage = "https://www.fanfiction.net/s/12711718/1/Hereafter"
-    nextTag.append("button")
-    nextAttr.append("text")
-    nextStr.append("Next >")
-    urlBase.append('https://www.fanfiction.net')
+    comicname = "Tripp"
+    filename = "tripp"
+    urlMain = "https://web.archive.org/web/20150506105057/http://www.trippcomic.com/home"
+    urlFirstPage = "https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/poet-b5e016f"
+    nextTag.append("a")
+    nextAttr.append("rel")
+    nextStr.append("next")
     nextLinkParent = False
     baseChange = False
 

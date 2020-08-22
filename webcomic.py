@@ -1,5 +1,4 @@
 import os
-#import webbrowser
 import urlAvasDemon
 import urlBladeBunny
 import urlCAD
@@ -34,7 +33,7 @@ class Webcomic:
 
 comiclist = []
 
-#XKCD
+# XKCD
 display = True
 comicname = "XKCD"
 filename = "xkcd"
@@ -50,7 +49,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Ava's Demon
+# Ava's Demon
 display = True
 comicname = "Ava's Demon"
 filename = "avasDemon"
@@ -59,8 +58,8 @@ urlFirstPage = "http://www.AvasDemon.com/pages.php#0001"
 totalpages = urlAvasDemon.urlBuild(urlFirstPage, filename, urlMain)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Blade Bunny
-#webpage doesn't like to reload...need to fix that
+# Blade Bunny
+# webpage doesn't like to reload...need to fix that, possibly run like webtoons?
 display = True
 comicname = "Blade Bunny"
 filename = "bladeBunny"
@@ -71,7 +70,7 @@ urlVol2 = "https://readcomiconline.to/Comic/Blade-Bunny-Vol-2/Issue-1?id=94715"
 totalpages = urlBladeBunny.urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Balazo
+# Balazo
 display = True
 comicname = "Balazo - Stories in Pretty Pictures"
 filename = "balazo"
@@ -80,13 +79,12 @@ urlFirstPage = "http://balazo.net/2010/08/starting-tomorrow/"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#The Bully's Bully
+# The Bully's Bully
 display = True
 comicname = "The Bully's Bully"
 filename = "bullysBully"
@@ -95,13 +93,12 @@ urlFirstPage = "https://web.archive.org/web/20160902045430/http://bullysbully.co
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("comic-nav-base comic-nav-next")
-#urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Subnormality
+# Subnormality
 display = True
 comicname = "Subnromality"
 filename = "subnormality"
@@ -111,7 +108,7 @@ urlFirstPage = "http://www.viruscomix.com/page324.html"
 nextTag.append("img")
 nextAttr.append("src")
 nextStr.append('subnext.*')
-#search 2
+# search 2
 nextTag.append("img")
 nextAttr.append("src")
 nextStr.append("nextIIC.gif")
@@ -124,7 +121,7 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
 # Will need something like Avas Demon for this (completely jQuery-button events for next page)
-#Carciphona
+# Carciphona
 display = False
 comicname = "Carciphona"
 filename = "carciphona"
@@ -139,7 +136,7 @@ totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Ctrl+Alt+Del
+# Ctrl+Alt+Del
 display = True
 comicname = "Ctrl+Alt+Del"
 filename = "CADcomic"
@@ -148,7 +145,7 @@ urlFirstPage = "http://cad-comic.com/comic/nice-melon/"
 totalpages = urlCAD.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#D20 Monkey
+# D20 Monkey
 display = True
 comicname = "d20 Monkey"
 filename = "d20"
@@ -157,13 +154,12 @@ urlFirstPage = "http://www.d20monkey.com/comic/welcome/"
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("navi comic-nav-next navi-next")
-#urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Devilbear
+# Devilbear
 display = True
 comicname = "Devilbear: The Grimoires of Bearalzebub"
 filename = "Devilbear"
@@ -178,7 +174,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Devilbear Shorts
+# Devilbear Shorts
 display = True
 comicname = "Devilbear: The Shorts of Bearalzebub"
 filename = "DevilbearShorts"
@@ -192,22 +188,22 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Depths of my Empty Soul
+# Depths of my Empty Soul
 display = True
 comicname = "Depths Of My Empty Soul (Mature)"
 filename = "Depths"
 urlMain = "http://depthsofmyemptysoul.smackjeeves.com/"
-urlFirstPage = "http://depthsofmyemptysoul.smackjeeves.com/comics/1629357/welcome/"
-nextTag.append("a")
+urlFirstPage = "https://www.smackjeeves.com/discover/detail?titleNo=15204&articleNo=1"
+nextTag.append("span")
 nextAttr.append("text")
-nextStr.append('Next >')
-urlBase.append('http://depthsofmyemptysoul.smackjeeves.com/mature.php?ref=')
-nextLinkParent = False
+nextStr.append('Next')
+urlBase.append('https://www.smackjeeves.com/discover')
+nextLinkParent = True
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Dreamscar
+# Dreamscar
 display = True
 comicname = "dream*scar"
 filename = "dreamscar"
@@ -222,7 +218,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Druids
+# Druids
 display = True
 comicname = "Druids (Mature)"
 filename = "Druids"
@@ -237,7 +233,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Earthsong
+# Earthsong
 display = True
 comicname = "Earthsong"
 filename = "earthsong"
@@ -253,7 +249,7 @@ totalpages = urlEarthsong.urlBuild(urlFirstPage, filename, nextTag, nextAttr, ne
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Everblue
+# Everblue
 display = True
 comicname = "Everblue"
 filename = "everblue"
@@ -268,7 +264,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Furthia High
+# Furthia High
 display = True
 comicname = "Furthia High"
 filename = "furthia"
@@ -277,13 +273,12 @@ urlFirstPage = "http://furthiahigh.concessioncomic.com/index.php?pid=20080128"
 nextTag.append("img")
 nextAttr.append("alt")
 nextStr.append("Next")
-#urlBase.append('')
 nextLinkParent = True
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Greg
+# Greg
 display = True
 comicname = "Greg"
 filename = "Greg"
@@ -298,7 +293,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#HalfLight
+# HalfLight
 display = True
 comicname = "HalfLight"
 filename = "halflight"
@@ -307,13 +302,12 @@ urlFirstPage = "http://halflightcomics.com/http:/halflightcomics.com/comic/chapt
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append('navi navi-next')
-#urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Miamaska
+# Miamaska
 display = True
 comicname = "Miamaska"
 filename = "miamaska"
@@ -328,7 +322,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Misfile
+# Misfile
 display = True
 comicname = "Misfile"
 filename = "misfile"
@@ -343,7 +337,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Modest Medusa
+# Modest Medusa
 display = True
 comicname = "Modest Medusa"
 filename = "medusa"
@@ -352,13 +346,12 @@ urlFirstPage = "http://modestmedusa.com/comic/christmas-eve-3/"
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("comic-nav-base comic-nav-next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Next Town Over
+# Next Town Over
 display = True
 comicname = "Next Town Over"
 filename = "nexttown"
@@ -367,13 +360,12 @@ urlFirstPage = "http://www.nexttownover.net/?p=4"
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("navi navi-next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Questionable Content
+# Questionable Content
 display = True
 comicname = "Questionable Content"
 filename = "questionable"
@@ -388,7 +380,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Red Moon Rising
+# Red Moon Rising
 display = True
 comicname = "Red Moon Rising"
 filename = "redmoon"
@@ -397,13 +389,12 @@ urlFirstPage = "http://www.redmoonrising.org/archive/red-moon-rising/"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Scout Crossing
+# Scout Crossing
 display = True
 comicname = "Scout Crossing"
 filename = "scout"
@@ -412,13 +403,12 @@ urlFirstPage = "http://scoutcrossing.net/comic/000-scoutcrossing/"
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("navi navi-next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Spinnerette
+# Spinnerette
 display = True
 comicname = "Spinnerette"
 filename = "spinnnerette"
@@ -427,13 +417,12 @@ urlFirstPage = "https://www.spinnyverse.com/comic/02-09-2010"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Think before you Think
+# Think before you Think
 display = True
 comicname = "Think Before You Think"
 filename = "think"
@@ -442,13 +431,12 @@ urlFirstPage = "http://thinkbeforeyouthink.net/?comic=20090612-coffee"
 nextTag.append("a")
 nextAttr.append("text")
 nextStr.append('Next >')
-#urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Toilet Genie
+# Toilet Genie
 display = True
 comicname = "Toilet Genie"
 filename = "toilet"
@@ -457,13 +445,12 @@ urlFirstPage = "https://www.deviantart.com/blix-it/art/D-0-0-R-Toilet-Genie-001-
 nextTag.append("a")
 nextAttr.append("text")
 nextStr.append('Next')
-#urlBase.append('')
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Two Guys and Guy
+# Two Guys and Guy
 display = True
 comicname = "Two Guys and Guy"
 filename = "twoguys"
@@ -477,7 +464,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#TwoKinds
+# TwoKinds
 display = True
 comicname = "TwoKinds"
 filename = "TwoKinds"
@@ -486,7 +473,7 @@ urlFirstPage = "http://twokinds.keenspot.com/comic/1/"
 totalpages = urlTwoKinds.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Looking for Group
+# Looking for Group
 display = True
 comicname = "Looking for Group"
 filename = "LFG"
@@ -495,7 +482,7 @@ urlFirstPage = 'https://www.lfg.co/page/1/'
 totalpages = urlLFG.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Q2Q
+# Q2Q
 display = True
 comicname = "Q2Q"
 filename = "q2qcomic"
@@ -504,8 +491,8 @@ urlFirstPage = 'https://q2qcomics.com/comic/q2q1/'
 totalpages = urlQ2Q.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Go Get a Roomie
-#Can be used with an extension that makes browser ignore X-Frame options EX: Ignore X-Frame-Options for Firefox
+# Go Get a Roomie
+# Can be used with an extension that makes browser ignore X-Frame options EX: Ignore X-Frame-Options for Firefox
 display = True
 comicname = "Go Get a Roomie! (Mature) (Requires X-Frame option extension)"
 filename = "roomie"
@@ -514,7 +501,7 @@ urlFirstPage = 'http://www.gogetaroomie.com/comic/and-so-it-begins'
 totalpages = urlRoomie.urlBuild(urlFirstPage, filename, urlMain)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Sanda and Woo
+# Sanda and Woo
 display = True
 comicname = "Sandra and Woo"
 filename = "sandra"
@@ -523,13 +510,12 @@ urlFirstPage = "http://www.sandraandwoo.com/2000/01/01/welcome-to-sandra-and-woo
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#A Redtail's Dream
+# A Redtail's Dream
 display = True
 comicname = "A Redtail's Dream"
 filename = "redtail"
@@ -544,7 +530,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Stand Still, Stay Silent
+# Stand Still, Stay Silent
 display = True
 comicname = "Stand Still. Stay Silent"
 filename = "sssscomic"
@@ -560,7 +546,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Sister Claire
+# Sister Claire
 display = True
 comicname = "Sister Claire Comic"
 filename = "sisterClaire"
@@ -569,13 +555,12 @@ urlFirstPage = "http://www.sisterclaire.com/comic/book-one"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append("")  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Sister Claire - Missing Moments
+# Sister Claire - Missing Moments
 display = True
 comicname = "Sister Claire Missing Moments"
 filename = "sisterClaireMM"
@@ -584,13 +569,12 @@ urlFirstPage = "http://www.sisterclaire.com/missing-moments/missing-moment-la-sc
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append("")  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Tripp (web archive)
+# Tripp (web archive)
 display = True
 comicname = "Tripp"
 filename = "tripp"
@@ -599,13 +583,12 @@ urlFirstPage = "https://web.archive.org/web/20150507152639/http://www.trippcomic
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-urlBase.append("https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Twilight Lady
+# Twilight Lady
 display = True
 comicname = "Twilight Lady"
 filename = "twilight"
@@ -614,13 +597,12 @@ urlFirstPage = "http://corridorcomix.com/twilightlady/comic/the-secret-of-cass-c
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("comic-nav-base comic-nav-next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Corridor Realms - Twilight Lady
+# Corridor Realms - Twilight Lady
 display = True
 comicname = "Corridor Realms - (new) Twilight Lady"
 filename = "twilightnew"
@@ -629,13 +611,12 @@ urlFirstPage = "http://corridorcomix.com/comic/twilight-ladys-house-concert/"
 nextTag.append("a")
 nextAttr.append("class")
 nextStr.append("comic-nav-base comic-nav-next")
-#urlBase.append("")
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Headless Bliss
+# Headless Bliss
 display = True
 comicname = "Headless Bliss"
 filename = "headbliss"
@@ -644,13 +625,12 @@ urlFirstPage = "http://www.headlessbliss.com/comic/page-1"
 nextTag.append("a")
 nextAttr.append("rel")
 nextStr.append("next")
-#urlBase.append("")  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#the end
+# the end
 display = True
 comicname = "the end"
 filename = "endcomic"
@@ -659,13 +639,12 @@ urlFirstPage = "http://www.endcomic.com/comic/book-one-cover/"
 nextTag.append("a")
 nextAttr.append("class_")
 nextStr.append('comic-nav-base comic-nav-next')
-#urlBase = ''  # full url for next page is in href
 nextLinkParent = False
 totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#Bedlam Genesis
+# Bedlam Genesis
 display = True
 comicname = "Bedlam Genesis"
 filename = "bedlam"
@@ -682,9 +661,9 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
-#FanFiction Stories
+# FanFiction Stories
 
-#FF Four Armed Bride
+# FF Four Armed Bride
 display = True
 comicname = "zFF Four Armed Bride"
 filename = "fourarmed"
@@ -699,7 +678,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF Hereafter
+# FF Hereafter
 display = True
 comicname = "zFF Hereafter"
 filename = "hereafter"
@@ -714,7 +693,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF Love is a Kind of War
+# FF Love is a Kind of War
 display = True
 comicname = "zFF Love is a Kind of War"
 filename = "loveiswar"
@@ -729,7 +708,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF Monster Falls
+# FF Monster Falls
 display = True
 comicname = "zFF Monster Falls"
 filename = "monsterfalls"
@@ -744,7 +723,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF One Hundred Kisses
+# FF One Hundred Kisses
 display = True
 comicname = "zFF One Hundred Kisses"
 filename = "100kisses"
@@ -759,7 +738,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF Recovery and Resolutions
+# FF Recovery and Resolutions
 display = True
 comicname = "zFF Recovery and Resolutions"
 filename = "recovery"
@@ -774,7 +753,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF The Savage Dark
+# FF The Savage Dark
 display = True
 comicname = "zFF The Savage Dark"
 filename = "savagedark"
@@ -789,7 +768,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF A Snowstorm of Secrets
+# FF A Snowstorm of Secrets
 display = True
 comicname = "zFF A Snowstorm of Secrets"
 filename = "snowstormsecrets"
@@ -804,7 +783,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF Swaw Mi Krr
+# FF Swaw Mi Krr
 display = True
 comicname = "zFF Swaw Mi Krr"
 filename = "swawmikrr"
@@ -819,7 +798,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF The fall of a king
+# FF The fall of a king
 display = True
 comicname = "zFF The Fall of a King"
 filename = "kingfall"
@@ -834,7 +813,7 @@ totalpages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTa
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-#FF The True Self
+# FF The True Self
 display = True
 comicname = "zFF The True Self"
 filename = "trueself"
@@ -850,120 +829,111 @@ comiclist.append(Webcomic(comicname, filename, totalpages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
-#Blocked by not allowing cross-origin framing
+# Blocked by not allowing cross-origin framing
 
-#WebToons - X-Frame extension doesn't allow these to work, more work required
-#maybe seperate program (using selenium?) to drive browser?
-#best change is making page of links and allow manual setting/marking
+# WebToons - X-Frame extension doesn't allow these to work, more work required
+# maybe seperate program (using selenium?) to drive browser?
+# best change is making page of links and allow manual setting/marking
 
-#The Angel in the Forest
+# The Angel in the Forest
 display = False
 comicname = "The Angel in the Forest"
 filename = "angelForest"
 urlMain = "https://www.webtoons.com/en/challenge/the-angel-in-the-forest/list?title_no=230887"
 urlFirstPage = "https://www.webtoons.com/en/challenge/the-angel-in-the-forest/indebted-babysitter/viewer?title_no=230887&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Flow
+# Flow
 display = False
 comicname = "Flow"
 filename = "flow"
 urlMain = "https://www.webtoons.com/en/fantasy/flow/list?title_no=101"
 urlFirstPage = "https://www.webtoons.com/en/fantasy/flow/ep-0/viewer?title_no=101&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Interspace Pirate Xuna
+# Interspace Pirate Xuna
 display = False
 comicname = "Interspace"
 filename = "interspace"
 urlMain = "https://www.webtoons.com/en/challenge/interspace-pirate-xuna/list?title_no=282267"
 urlFirstPage = "https://www.webtoons.com/en/challenge/interspace-pirate-xuna/prologue/viewer?title_no=282267&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#LionHeart
+# LionHeart
 display = False
 comicname = "LionHeart"
 filename = "lionheart"
 urlMain = "https://www.webtoons.com/en/challenge/lionheart/list?title_no=312965"
 urlFirstPage = "https://www.webtoons.com/en/challenge/lionheart/ep-1/viewer?title_no=312965&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Lumine
+# Lumine
 display = False
 comicname = "Lumine"
 filename = "lumine"
 urlMain = "https://www.webtoons.com/en/drama/lumine/list?title_no=1022"
-urlFirstPage = "https://www.webtoons.com/en/drama/lumine/episode-1/viewer?title_no=1022&episode_no=1"
+urlFirstPage = "https://www.webtoons.com/en/drama/lumine/ep-1/viewer?title_no=1022&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Rise from Ashes
+# Rise from Ashes
 display = False
 comicname = "Rise from Ashes"
 filename = "riseFromAshes"
 urlMain = "https://www.webtoons.com/en/fantasy/rise-from-ashes/list?title_no=959"
 urlFirstPage = "https://www.webtoons.com/en/fantasy/rise-from-ashes/ep-1/viewer?title_no=959&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Seed
+# Seed
 display = False
 comicname = "Seed"
 filename = "seed"
 urlMain = "https://www.webtoons.com/en/sf/seed/list?title_no=1480"
 urlFirstPage = "https://www.webtoons.com/en/sf/seed/prologue/viewer?title_no=1480&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Soleil
+# Soleil
 display = False
 comicname = "Soleil"
 filename = "soleil"
 urlMain = "https://www.webtoons.com/en/fantasy/soleil/list?title_no=1823"
 urlFirstPage = "https://www.webtoons.com/en/fantasy/soleil/episode-1/viewer?title_no=1823&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
-#Space Vixen
+# Space Vixen
 display = False
 comicname = "Space Vixen - Deep Space K9"
 filename = "spaceVixen"
 urlMain = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/list?title_no=207049"
 urlFirstPage = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/episode-0-prologue-pyramid-scheme/viewer?title_no=207049&episode_no=1"
 totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
-#totalpages = 0
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 
-#Possibly defunct/dead
+# Possibly defunct/dead
 
-#Home
+# Home
 display = False
 comicname = "Home"
 filename = ""
 urlMain = ""
 urlFirstPage = "http://home-comic.smackjeeves.com/comics/2256824/page-1/"
 
-#Mortal Half
+# Mortal Half
 display = False
 comicname = "Mortal Half"
 filename = ""
 urlMain = "http://www.mortalhalf.com/webcomic/"
 urlFirstPage = ""
 
-#Succubus Justice--DEAD
+# Succubus Justice--DEAD
 display = False
 comicname = "Succubus Justice"
 filename = ""
@@ -986,7 +956,6 @@ for comic in comiclist:
     else:
         tempstr += "* "
     tempstr += comic.name + "  "
-    #tempstr += str(comic.pages)
     print(tempstr)
 
 buildMainPage(comics, files, pages, visible)
@@ -994,5 +963,5 @@ buildMainPage(comics, files, pages, visible)
 
 print('Main Page stored at:')
 print(os.path.realpath('webcomic\webcomic.html'))
-#print('Opening Webcomic Main Page')
-#webbrowser.open('file://' + os.path.realpath('webcomic\webcomic.html'))
+# print('Opening Webcomic Main Page')
+# webbrowser.open('file://' + os.path.realpath('webcomic\webcomic.html'))
