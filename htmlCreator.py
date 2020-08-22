@@ -156,6 +156,7 @@ def comicbody(htmlfile, pagecount, webtoon=False):
         htmlfile.write('<p />' +
                        'Use the buttons below to open the comic in a new tab.' +
                        '<br>Because the comic is from Webtoons.com it can not open in this page.' +
+                       '<p />' +
                        '<button onclick="progressNext()" type="button">Open Next Comic</button>' +
                        '<p />' +
                        '<button onclick="openCurrent()" type="button">Open Current Comic</button>' +
@@ -163,6 +164,7 @@ def comicbody(htmlfile, pagecount, webtoon=False):
                        '<button onclick="progressPrevious()" type="button">Open Previous Comic</button>' +
                        '<p />' +
                        '<br>Fill in a number and click the button to set the comic to that position.' +
+                       '<p />' +
                        '<input type="number" id="newposition" name="newposition" min="1" max="' + str(pagecount) + '">' +
                        '<button onclick="setComic()" type="button">Set Comic Page</button>' +
                        '<p />')

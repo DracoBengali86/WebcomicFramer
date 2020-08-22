@@ -836,7 +836,7 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 # best change is making page of links and allow manual setting/marking
 
 # The Angel in the Forest
-display = False
+display = True
 comicname = "The Angel in the Forest"
 filename = "angelForest"
 urlMain = "https://www.webtoons.com/en/challenge/the-angel-in-the-forest/list?title_no=230887"
@@ -845,7 +845,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Flow
-display = False
+display = True
 comicname = "Flow"
 filename = "flow"
 urlMain = "https://www.webtoons.com/en/fantasy/flow/list?title_no=101"
@@ -854,7 +854,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Interspace Pirate Xuna
-display = False
+display = True
 comicname = "Interspace"
 filename = "interspace"
 urlMain = "https://www.webtoons.com/en/challenge/interspace-pirate-xuna/list?title_no=282267"
@@ -863,7 +863,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # LionHeart
-display = False
+display = True
 comicname = "LionHeart"
 filename = "lionheart"
 urlMain = "https://www.webtoons.com/en/challenge/lionheart/list?title_no=312965"
@@ -872,7 +872,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Lumine
-display = False
+display = True
 comicname = "Lumine"
 filename = "lumine"
 urlMain = "https://www.webtoons.com/en/drama/lumine/list?title_no=1022"
@@ -881,7 +881,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Rise from Ashes
-display = False
+display = True
 comicname = "Rise from Ashes"
 filename = "riseFromAshes"
 urlMain = "https://www.webtoons.com/en/fantasy/rise-from-ashes/list?title_no=959"
@@ -890,7 +890,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Seed
-display = False
+display = True
 comicname = "Seed"
 filename = "seed"
 urlMain = "https://www.webtoons.com/en/sf/seed/list?title_no=1480"
@@ -899,7 +899,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Soleil
-display = False
+display = True
 comicname = "Soleil"
 filename = "soleil"
 urlMain = "https://www.webtoons.com/en/fantasy/soleil/list?title_no=1823"
@@ -908,7 +908,7 @@ totalpages = urlWebToons.urlBuild(urlFirstPage, filename)
 comiclist.append(Webcomic(comicname, filename, totalpages, display))
 
 # Space Vixen
-display = False
+display = True
 comicname = "Space Vixen - Deep Space K9"
 filename = "spaceVixen"
 urlMain = "https://www.webtoons.com/en/challenge/space-vixen-deep-space-k9/list?title_no=207049"
