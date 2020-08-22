@@ -1,14 +1,14 @@
 import os
 
 
-def buildComicPage(pagecount, filename, reloadrequired=False):
+def buildComicPage(pagecount, filename, reloadrequired=False, webtoon=False):
     print("Building " + filename + " webpage")
 
     htmlfile = open(os.path.join('webcomic', filename + '.html'), 'w')
 
-    comicheader(htmlfile, pagecount, filename)
-    comicbody(htmlfile)
-    comicscripts(htmlfile, pagecount, filename, reloadrequired)
+    comicheader(htmlfile, pagecount, filename, webtoon)
+    comicbody(htmlfile, pagecount, webtoon)
+    comicscripts(htmlfile, pagecount, filename, reloadrequired, webtoon)
 
     htmlfile.close()
     print("Done building " + filename + " webpage\n")
@@ -19,8 +19,8 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
 
     htmlfile = open('webcomic\\Webcomic.html', 'w')
 
-    #common head banner code
-    #removed "overflow:hidden" from body style
+    # common head banner code
+    # removed "overflow:hidden" from body style
     htmlfile.write('<!DOCTYPE html>\n' +
                    '<html style="height:100%">\n' +
                    '<head>\n' +
@@ -35,7 +35,7 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '</div>\n' +
                    '<div style="position:absolute; top:73px; bottom:9px; left:8px; right:12px">\n')
 
-    #iterate through creating comic displays
+    # iterate through creating comic displays
     for i in range(len(comicnames)):
         if (displayonpage[i]):
             strtotal = str(totalpages[i])
@@ -47,7 +47,7 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                            '<br />\n' +
                            '<a id="page' + filenames[i] + '">Page 1</a>/' + strtotal + '\n')
 
-    #common closing and scripts
+    # common closing and scripts
     htmlfile.write('</div>\n' +
                    '</body>\n' +
                    '</html>\n' +
@@ -110,7 +110,7 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
     print("Done building Main webpage\n")
 
 
-def comicheader(htmlfile, pagecount, filename):
+def comicheader(htmlfile, pagecount, filename, webtoon=False):
     htmlfile.write('<!DOCTYPE html>\n' +
                    '<html style="height:100%">\n' +
                    '<head>\n' +
@@ -125,7 +125,8 @@ def comicheader(htmlfile, pagecount, filename):
                    '<div style="left:8px; right:12px; height:55px; background-color:grey; text-align:center">\n' +
                    '  <a href="javascript:progressFirst()">First</a>\n' +
                    '  <label for="' + filename + '">1</label>\n' +
-                   '  <progress id="' + filename + '" style="width:75%" max="' + str(pagecount) + '" value="1"><span>1</span>/' + str(pagecount) + '</progress>\n' +
+                   '  <progress id="' + filename + '" style="width:75%" max="' + str(pagecount) +
+                   '" value="1"><span>1</span>/' + str(pagecount) + '</progress>\n' +
                    '  ' + str(pagecount) + '\n' +
                    '  <a href="javascript:progressLast()">Last</a>\n' +
                    '  <br />\n' +
@@ -133,40 +134,63 @@ def comicheader(htmlfile, pagecount, filename):
                    '  <br />\n' +
                    '  <div style="left:8px; height:10px; width:300px; float:left">\n' +
                    '    <a href="Webcomic.html">Home</a>\n' +
-                   '  </div>\n' +
-                   '  <a href="javascript:progressPrevious()"><- Prev</a>\n' +
-                   '  <a href="javascript:progressNext()">Next -></a>\n' +
-                   '  <div style="right:12px; height:10px; width:300px; float:right">\n' +
+                   '  </div>\n')
+    if not webtoon:
+        htmlfile.write('  <a href="javascript:progressPrevious()"><- Prev</a>\n' +
+                       '  <a href="javascript:progressNext()">Next -></a>\n')
+    htmlfile.write('  <div style="right:12px; height:10px; width:300px; float:right">\n' +
                    '  </div>\n' +
                    '</div>\n')
 
 
-def comicbody(htmlfile):
-    htmlfile.write('<div style="position:absolute; top:63px; bottom:9px; left:8px; right:12px">\n' +
-                   # left off allow-forms and allow-popups. Could probably be added, but likely not necessary
-                   # allow-top-navigation is what allowed Sister Claire to break out of iframe
-                   '<iframe sandbox="allow-same-origin allow-scripts allow-pointer-lock" ' +
-                   'src="" name="ifrm" width="100%" height="100%">\n' +
-                   '  <p>Your browser does not support iframes.</p>\n' +
-                   '</iframe>\n' +
-                   '</div>\n' +
+def comicbody(htmlfile, pagecount, webtoon=False):
+    htmlfile.write('<div style="position:absolute; top:63px; bottom:9px; left:8px; right:12px">\n')
+    if not webtoon:
+        # left off allow-forms and allow-popups. Could probably be added, but likely not necessary
+        # allow-top-navigation is what allowed Sister Claire to break out of iframe
+        htmlfile.write('<iframe sandbox="allow-same-origin allow-scripts allow-pointer-lock" ' +
+                       'src="" name="ifrm" width="100%" height="100%">\n' +
+                       '  <p>Your browser does not support iframes.</p>\n' +
+                       '</iframe>\n')
+    else:
+        htmlfile.write('<p />' +
+                       'Use the buttons below to open the comic in a new tab.' +
+                       '<br>Because the comic is from Webtoons.com it can not open in this page.' +
+                       '<button onclick="progressNext()" type="button">Open Next Comic</button>' +
+                       '<p />' +
+                       '<button onclick="openCurrent()" type="button">Open Current Comic</button>' +
+                       '<p />' +
+                       '<button onclick="progressPrevious()" type="button">Open Previous Comic</button>' +
+                       '<p />' +
+                       '<br>Fill in a number and click the button to set the comic to that position.' +
+                       '<input type="number" id="newposition" name="newposition" min="1" max="' + str(pagecount) + '">' +
+                       '<button onclick="setComic()" type="button">Set Comic Page</button>' +
+                       '<p />')
+    htmlfile.write('</div>\n' +
                    '</body>\n' +
                    '</html>\n')
 
 
-def comicscripts(htmlfile, pagecount, filename, reloadrequired=False):
+def comicscripts(htmlfile, pagecount, filename, reloadrequired=False, webtoon=False):
     htmlfile.write('<script type="text/javascript">\n' +
                    'var progressBar = document.getElementById(\'' + filename + '\');\n' +
-                   'var myposition = progressBar.value;\n' +
-                   'var myframe = document.getElementsByName(\'ifrm\')[0];\n' +
-                   'function progressNext() {\n' +
+                   'var myposition = progressBar.value;\n')
+    if not webtoon:
+        htmlfile.write('var myframe = document.getElementsByName(\'ifrm\')[0];\n')
+    htmlfile.write('function progressNext() {\n' +
                    '  if (myposition + 1 > comics[0]) {\n' +
                    '    //alert(\'no more comics\');\n' +
                    '    window.location.href = \'Webcomic.html\'\n' +
                    '    return;\n' +
                    '  }\n' +
                    '  myposition = myposition + 1;\n' +
-                   '  updateProgress();\n' +
+                   '  updateProgress();\n')
+    if webtoon:
+        htmlfile.write('  window.open(comics[myposition], \'_blank\');' +
+                       '}\n' +
+                       'function openCurrent() {\n' +
+                       '  window.open(comics[myposition], \'_blank\');')
+    htmlfile.write(
                    '}\n' +
                    'function progressPrevious() {\n' +
                    '  if (myposition - 1 < 1) {\n' +
@@ -174,8 +198,20 @@ def comicscripts(htmlfile, pagecount, filename, reloadrequired=False):
                    '    return;\n' +
                    '  }\n' +
                    '  myposition = myposition - 1;\n' +
-                   '  updateProgress();\n' +
-                   '}\n' +
+                   '  updateProgress();\n')
+    if webtoon:
+        htmlfile.write('  window.open(comics[myposition], \'_blank\');' +
+                       '}\n' +
+                       'function setComic() {' +
+                       '  if (newposition.value < 1) {' +
+                       '    newposition.value = 1;' +
+                       '  } else if (newposition.value > comics[0]) {' +
+                       '    newposition.value = comics[0];' +
+                       '  }' +
+                       '  myposition = newposition.value;' +
+                       '  updateProgress();' +
+                       '  newposition.value = "";')
+    htmlfile.write('}\n' +
                    'function progressFirst() {\n' +
                    '  myposition = 1;\n' +
                    '  updateProgress();\n' +
@@ -188,10 +224,11 @@ def comicscripts(htmlfile, pagecount, filename, reloadrequired=False):
                    '  progressBar.value = myposition;\n' +
                    '  progressBar.getElementsByTagName(\'span\')[0].textContent = myposition\n' +
                    '  document.getElementById(\'page\').innerHTML = "Page " + myposition;\n' +
-                   '  sessionStorage.setItem(\'' + filename + '\', myposition);\n' +
-                   '  myframe.src = comics[myposition];\n')
+                   '  sessionStorage.setItem(\'' + filename + '\', myposition);\n')
+    if not webtoon:
+        htmlfile.write('  myframe.src = comics[myposition];\n')
 
-    if (reloadrequired):
+    if reloadrequired:
         htmlfile.write('  myframe.reload(true);\n')
 
     htmlfile.write('}\n' +
@@ -219,9 +256,9 @@ def comicscripts(htmlfile, pagecount, filename, reloadrequired=False):
 
 if __name__ == "__main__":
     import sys
-    #arg1 = pagecount int
-    #arg2 = filename str
-    #arg3 = reloadrequired bool
+    # arg1 = pagecount int
+    # arg2 = filename str
+    # arg3 = reloadrequired bool
     arguments = len(sys.argv) - 1
 
     pages = sys.argv[1]
@@ -243,4 +280,3 @@ if __name__ == "__main__":
         reload = True
 
     buildComicPage(pages, file, reload)
-    #htmlTwoKinds(50, 'TwoKinds')

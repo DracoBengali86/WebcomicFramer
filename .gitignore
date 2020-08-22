@@ -244,3 +244,4 @@ Build_Webcomic*
 
 #chromedriver.exe
 #geckodriver.exe
+/WebcomicFramer.yml

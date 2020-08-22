@@ -1,6 +1,5 @@
 import requests
 import os
-#import re
 import bs4  # beautifulSoup4
 from htmlCreator import buildComicPage
 
@@ -60,7 +59,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         j = 0
         while nextTemp is None:
             if j == 0:
-                #find button with title = "Next Episode"
+                # find button with title = "Next Episode"
                 nextTemp = soup.find("a", title="Next Episode")
             else:
                 print("next link couldn't be found")
@@ -73,14 +72,14 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         else:
             nextLink = nextTemp.get('href')
 
-        #nextLink = soup.select('a[title="Next Episode"]')[0]
-        #url = nextLink.get('href')
+        # nextLink = soup.select('a[title="Next Episode"]')[0]
+        # url = nextLink.get('href')
         url = nextLink
 
     pagecount = pagecount + i
     print('Done. Current Pagecount: ' + str(pagecount))
 
-    buildComicPage(pagecount, filename)
+    buildComicPage(pagecount, filename, webtoon=True)
 
     return pagecount
 
