@@ -19,7 +19,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
     urlPrev = ''
     numBases = len(urlBases)
     writeURL = True
-    pagecount = 0
+    page_count = 0
     i = 0
     isbutton = False
 
@@ -31,14 +31,14 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
     if fileExists:
         with open(os.path.join('webcomic', filename), 'r') as f:
             lines = f.read().splitlines()
-            pagecount = len(lines)
-            if pagecount > 0:
+            page_count = len(lines)
+            if page_count > 0:
                 writeURL = False
-                if lines[pagecount - 1] == "zzzENDzzz":
-                    pagecount -= 1
-                    url = lines[pagecount]
+                if lines[page_count - 1] == "zzzENDzzz":
+                    page_count -= 1
+                    url = lines[page_count]
                 else:
-                    url = lines[pagecount - 1]
+                    url = lines[page_count - 1]
 
     if numBases < 1:
         print("No Base defined, assuming full URL in next link")
@@ -57,7 +57,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
 
     if len(nextTag) != len(nextAttr) or len(nextTag) != len(nextStr):
         print("Search conditions length mismatch")
-        return pagecount
+        return page_count
     searchLength = len(nextTag)
 
     # Stop if the next url is the "searchend", or no next URL is found, or next URL is the same as the previous URL
@@ -65,7 +65,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
         # Download page
         print('Finding page %s...' %url)
         try:
-            res = requests.get(url, headers={"User-Agent":sUserAgent})
+            res = requests.get(url, headers={"User-Agent": sUserAgent})
         except requests.ConnectionError as err:
             try:
                 res = requests.get(url, verify=False)
@@ -113,7 +113,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 elif nextAttr[j] == 'class' or nextAttr[j] == 'class_':
                     nextTemp = soup.find(nextTag[j], class_=nextStr[j])
                 else:
-                    nextTemp = soup.find(nextTag[j], {nextAttr[j] : re.compile(nextStr[j])})
+                    nextTemp = soup.find(nextTag[j], {nextAttr[j]: re.compile(nextStr[j])})
 
                 if nextTag[j] == 'button':
                     isbutton = True
@@ -157,18 +157,18 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 print("No matching base URL. Cannot proceed till new base is added to array")
                 print("Previous base: " + urlnextBase)
                 print("Latest url (not added): " + nextPage)
-                print("Current Pagecout: " + str(pagecount))
-                buildComicPage(pagecount, filename)
-                return pagecount
+                print("Current Page Count: " + str(page_count))
+                buildComicPage(page_count, filename)
+                return page_count
 
         url = urlnextBase + nextPage
 
-    pagecount = pagecount + i
-    print('Done. Current Pagecount: ' + str(pagecount))
+    page_count = page_count + i
+    print('Done. Current Page Count: ' + str(page_count))
 
-    buildComicPage(pagecount, filename)
+    buildComicPage(page_count, filename)
 
-    return pagecount
+    return page_count
 
 
 if __name__ == "__main__":

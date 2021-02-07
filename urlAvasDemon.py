@@ -1,12 +1,10 @@
 import requests
 import os
-#import re
-#import bs4  # beautifulSoup4
 from datetime import datetime
 from selenium import webdriver
 from htmlCreator import buildComicPage
 
-#latestPage = '2382'
+# latestPage = '2382'
 
 
 def urlBuild(urlFirstPage, filename, urlMain):
@@ -45,7 +43,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
             print("Latest search less then 7 days ago, rebuilding page (No search performed)")
             buildComicPage(pagecount, filename, True)
             return pagecount
-            # If end of comic has been reached, don't search reguardless
+            # If end of comic has been reached, don't search regardless
         elif url.endswith('zzzENDzzz'):
             print("End of Comic flag found, no search performed")
             buildComicPage(pagecount, filename, True)

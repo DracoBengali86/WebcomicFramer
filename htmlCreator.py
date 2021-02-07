@@ -37,7 +37,7 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
 
     # iterate through creating comic displays
     for i in range(len(comicnames)):
-        if (displayonpage[i]):
+        if displayonpage[i]:
             strtotal = str(totalpages[i])
             htmlfile.write('<p />\n' +
                            '<a href="' + filenames[i] + '.html">' + comicnames[i] + '</a>\n' +
@@ -267,7 +267,7 @@ if __name__ == "__main__":
     file = sys.argv[2]
     reload = sys.argv[3]
 
-    if (pages in ['-h', '--help', 'h', 'help', '/?']):
+    if pages in ['-h', '--help', 'h', 'help', '/?']:
         print("<number of pages> <filename containing links> [True or False if reload if required]", file=sys.stderr)
         raise SystemExit
     elif (arguments < 2) or (arguments > 3):
