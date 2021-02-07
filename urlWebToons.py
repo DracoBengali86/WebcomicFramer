@@ -7,7 +7,7 @@ from htmlCreator import buildComicPage
 def urlBuild(urlFirstPage, filename, urlMain=None):
     url = urlFirstPage
     writeURL = True
-    pagecount = 0
+    page_count = 0
     i = 0
 
     if os.path.isfile(os.path.join('webcomic', filename)):
@@ -18,18 +18,18 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
     if fileExists:
         with open(os.path.join('webcomic', filename), 'r') as f:
             lines = f.read().splitlines()
-            pagecount = len(lines)
-            if pagecount > 0:
+            page_count = len(lines)
+            if page_count > 0:
                 writeURL = False
-                if lines[pagecount - 1] == "zzzENDzzz":
-                    pagecount -= 1
-                    url = lines[pagecount]
+                if lines[page_count - 1] == "zzzENDzzz":
+                    page_count -= 1
+                    url = lines[page_count]
                 else:
-                    url = lines[pagecount - 1]
+                    url = lines[page_count - 1]
 
     while not url.endswith('zzzENDzzz'):  # on latest page url under 'Next' button ends with '#'
         # Download page
-        print('Finding page %s...' %url)
+        print('Finding page %s...' % url)
         try:
             res = requests.get(url)
             res.raise_for_status()
@@ -76,12 +76,12 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         # url = nextLink.get('href')
         url = nextLink
 
-    pagecount = pagecount + i
-    print('Done. Current Pagecount: ' + str(pagecount))
+    page_count = page_count + i
+    print('Done. Current Page Count: ' + str(page_count))
 
-    buildComicPage(pagecount, filename, webtoon=True)
+    buildComicPage(page_count, filename, webtoon=True)
 
-    return pagecount
+    return page_count
 
 
 if __name__ == "__main__":

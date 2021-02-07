@@ -1,20 +1,20 @@
 import os
 
 
-def buildComicPage(pagecount, filename, reloadrequired=False, webtoon=False):
+def buildComicPage(page_count, filename, reload_required=False, webtoon=False):
     print("Building " + filename + " webpage")
 
     htmlfile = open(os.path.join('webcomic', filename + '.html'), 'w')
 
-    comicheader(htmlfile, pagecount, filename, webtoon)
-    comicbody(htmlfile, pagecount, webtoon)
-    comicscripts(htmlfile, pagecount, filename, reloadrequired, webtoon)
+    comicheader(htmlfile, page_count, filename, webtoon)
+    comicbody(htmlfile, page_count, webtoon)
+    comicscripts(htmlfile, page_count, filename, reload_required, webtoon)
 
     htmlfile.close()
     print("Done building " + filename + " webpage\n")
 
 
-def buildMainPage(comicnames, filenames, totalpages, displayonpage):
+def buildMainPage(comic_names, filenames, total_pages, displayonpage):
     print("Building Main webpage")
 
     htmlfile = open('webcomic\\Webcomic.html', 'w')
@@ -36,11 +36,11 @@ def buildMainPage(comicnames, filenames, totalpages, displayonpage):
                    '<div style="position:absolute; top:73px; bottom:9px; left:8px; right:12px">\n')
 
     # iterate through creating comic displays
-    for i in range(len(comicnames)):
+    for i in range(len(comic_names)):
         if displayonpage[i]:
-            strtotal = str(totalpages[i])
+            strtotal = str(total_pages[i])
             htmlfile.write('<p />\n' +
-                           '<a href="' + filenames[i] + '.html">' + comicnames[i] + '</a>\n' +
+                           '<a href="' + filenames[i] + '.html">' + comic_names[i] + '</a>\n' +
                            '<br />\n' +
                            '<progress id="' + filenames[i] + '" style="width:25%" max="' + strtotal + '" ' +
                            'value="1"><span>1</span>/' + strtotal + '</progress>\n' +
@@ -258,9 +258,9 @@ def comicscripts(htmlfile, pagecount, filename, reloadrequired=False, webtoon=Fa
 
 if __name__ == "__main__":
     import sys
-    # arg1 = pagecount int
+    # arg1 = page_count int
     # arg2 = filename str
-    # arg3 = reloadrequired bool
+    # arg3 = reload_required bool
     arguments = len(sys.argv) - 1
 
     pages = sys.argv[1]

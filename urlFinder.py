@@ -1,7 +1,3 @@
-# Start with code from urlXKCD, and modify as necessary
-# urlSubnorm uses re
-# Will likely have to add more variables
-
 import requests
 import os
 import re
@@ -14,7 +10,7 @@ sUserAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Fi
 
 
 def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextStr, nextLinkParent,
-             searchend='.us.k12.edu', baseChanges=False):
+             search_end='.us.k12.edu', baseChanges=False):
     url = urlFirstPage
     urlPrev = ''
     numBases = len(urlBases)
@@ -60,10 +56,10 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
         return page_count
     searchLength = len(nextTag)
 
-    # Stop if the next url is the "searchend", or no next URL is found, or next URL is the same as the previous URL
-    while not url.endswith(searchend) and not url.endswith('zzzENDzzz') and urlPrev != url:
+    # Stop if the next url is the "search_end", or no next URL is found, or next URL is the same as the previous URL
+    while not url.endswith(search_end) and not url.endswith('zzzENDzzz') and urlPrev != url:
         # Download page
-        print('Finding page %s...' %url)
+        print('Finding page %s...' % url)
         try:
             res = requests.get(url, headers={"User-Agent": sUserAgent})
         except requests.ConnectionError as err:
@@ -176,7 +172,7 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comicname = "Tripp"
+    comic_name = "Tripp"
     filename = "tripp"
     urlMain = "https://web.archive.org/web/20150506105057/http://www.trippcomic.com/home"
     urlFirstPage = "https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/poet-b5e016f"
@@ -187,4 +183,5 @@ if __name__ == "__main__":
     baseChange = False
 
     os.makedirs('webcomic', exist_ok=True)
-    urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)
+    urlBuild(
+        urlFirstPage, file_name, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)
