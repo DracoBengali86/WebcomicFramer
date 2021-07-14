@@ -105,7 +105,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
         nextPage = int(nextLink) + 1
         nextLink = str(nextPage).zfill(4)
 
-        #url = 'http://www.AvasDemon.com/pages.php?page=' + nextLink
+        # url = 'http://www.AvasDemon.com/pages.php?page=' + nextLink
         url = 'http://www.avasdemon.com/pages.php?page#' + nextLink
 
     pagecount = pagecount + i

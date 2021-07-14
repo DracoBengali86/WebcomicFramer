@@ -1,6 +1,5 @@
 import requests
 import os
-#import re
 import bs4  # beautifulSoup4
 from htmlCreator import buildComicPage
 

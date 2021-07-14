@@ -199,12 +199,12 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 display = True
 comic_name = "Depths Of My Empty Soul (Mature)"
 filename = "Depths"
-urlMain = "http://depthsofmyemptysoul.smackjeeves.com/"
-urlFirstPage = "https://www.smackjeeves.com/discover/detail?titleNo=15204&articleNo=1"
-nextTag.append("span")
-nextAttr.append("text")
-nextStr.append('Next')
-urlBase.append('https://www.smackjeeves.com/discover')
+urlMain = "https://www.theduckwebcomics.com/Depths_of_My_Empty_Soul/"
+urlFirstPage = "https://www.theduckwebcomics.com/Depths_of_My_Empty_Soul/5242309/"
+nextTag.append("img")
+nextAttr.append("class_")
+nextStr.append('arrow_next')
+urlBase.append('https://www.theduckwebcomics.com')
 nextLinkParent = True
 total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
