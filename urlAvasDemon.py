@@ -66,8 +66,9 @@ def urlBuild(urlFirstPage, filename, urlMain):
                 try:
                     buildComicPage(pagecount, filename, True)
                     return pagecount
-                except:
+                except Exception as err:
                     print("building comic page failed!")
+                    print("Error:", err)
                     return 0
         pastLatest = str(int(latestPage) + 1).zfill(4)
     except TypeError:
@@ -76,14 +77,15 @@ def urlBuild(urlFirstPage, filename, urlMain):
         print('***Current Pagecount: ' + str(pagecount) + '***\n')
         try:
             buildComicPage(pagecount, filename, True)
-        except:
+        except Exception as err:
             print("building comic page failed!")
+            print("Error:", err)
             return 0
         return pagecount
 
     while not url.endswith(pastLatest):  # on latest page url under 'Next' button ends with '#'
         # Download page
-        print('Finding page %s...' %url)
+        print('Finding page %s...' % url)
         res = requests.get(url)
         res.raise_for_status()
 
@@ -115,8 +117,9 @@ def urlBuild(urlFirstPage, filename, urlMain):
     if i == 0:
         try:
             os.utime("webcomic/" + filename)
-        except:
+        except Exception as err:
             print("Error updating modified time: " + filename)
+            print("Error:", err)
             exit(-1)
 
     buildComicPage(pagecount, filename, True)

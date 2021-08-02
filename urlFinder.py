@@ -36,6 +36,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 else:
                     url = lines[page_count - 1]
 
+    urlnextBase = urlBases[0]  # was an else, moved to remove IDE warnings
     if numBases < 1:
         print("No Base defined, assuming full URL in next link")
         urlBases.append("")
@@ -48,8 +49,6 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 urlnextBase = urlBases[m]
                 break
             m += 1
-    else:
-        urlnextBase = urlBases[0]
 
     if len(nextTag) != len(nextAttr) or len(nextTag) != len(nextStr):
         print("Search conditions length mismatch")
@@ -62,12 +61,13 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
         print('Finding page %s...' % url)
         try:
             res = requests.get(url, headers={"User-Agent": sUserAgent})
-        except requests.ConnectionError as err:
+        except requests.ConnectionError as err1:
             try:
                 res = requests.get(url, verify=False)
-            except:
+            except Exception as err2:
                 print(" *** ")
-                print(err)
+                print(err1)
+                print(err2)
                 print(" *** ")
                 break
         except requests.exceptions.RequestException as err:
