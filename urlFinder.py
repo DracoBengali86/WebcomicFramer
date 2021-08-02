@@ -173,7 +173,7 @@ if __name__ == "__main__":
     nextStr = []
     urlBase = []
     comic_name = "Tripp"
-    filename = "tripp"
+    file_name = "tripp"
     urlMain = "https://web.archive.org/web/20150506105057/http://www.trippcomic.com/home"
     urlFirstPage = "https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/poet-b5e016f"
     nextTag.append("a")
