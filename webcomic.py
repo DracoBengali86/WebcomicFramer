@@ -126,7 +126,7 @@ comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
-# Will need something like Avas Demon for this (completely jQuery-button events for next page)
+# Will need something like Ava's Demon for this (completely jQuery-button events for next page)
 # Carciphona
 display = False
 comic_name = "Carciphona"

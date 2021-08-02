@@ -29,7 +29,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
 
     while not url.endswith('zzzENDzzz'):  # on latest page url under 'Next' button ends with '#'
         # Download page
-        print('Finding page %s...' %url)
+        print('Finding page %s...' % url)
         try:
             res = requests.get(url, verify=False)
             res.raise_for_status()

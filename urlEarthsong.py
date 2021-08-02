@@ -9,7 +9,7 @@ from htmlCreator import buildComicPage
 sUserAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:15.0) Gecko/20100101 Firefox/15.0.1'
 
 
-def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.us.k12.edu'):
+def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend='.us.k12.edu'):
     url = urlFirstPage
     urlPrev = ''
     writeURL = True
@@ -41,15 +41,16 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.u
     # Stop if the next url is the "searchend", or no next URL is found, or next URL is the same as the previous URL
     while not url.endswith(searchend) and not url.endswith('zzzENDzzz') and urlPrev != url:
         # Download page
-        print('Finding page %s...' %url)
+        print('Finding page %s...' % url)
         try:
-            res = requests.get(url, headers={"User-Agent":sUserAgent})
-        except requests.ConnectionError as err:
+            res = requests.get(url, headers={"User-Agent": sUserAgent})
+        except requests.ConnectionError as err1:
             try:
                 res = requests.get(url, verify=False)
-            except:
+            except Exception as err2:
                 print(" *** ")
-                print(err)
+                print(err1)
+                print(err2)
                 print(" *** ")
                 break
         except requests.exceptions.RequestException as err:
@@ -91,7 +92,7 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.u
                 elif nextAttr[j] == 'class' or nextAttr[j] == 'class_':
                     nextTemp = soup.find(nextTag[j], class_=nextStr[j])
                 else:
-                    nextTemp = soup.find(nextTag[j], {nextAttr[j] : re.compile(nextStr[j])})
+                    nextTemp = soup.find(nextTag[j], {nextAttr[j]: re.compile(nextStr[j])})
             else:
                 print("next link couldn't be found")
                 print("last found page: " + url)
@@ -117,7 +118,6 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend = '.u
 
         if not nextPage.startswith("/"):
             urlnextBase = urlnextBase + "/"
-
 
         # Prevent loop if "Next" comic is the same as the last comic
         urlPrev = url

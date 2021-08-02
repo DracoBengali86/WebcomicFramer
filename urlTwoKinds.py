@@ -29,7 +29,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
 
     while not url.endswith('zzzENDzzz'):  # on latest page url under 'Next' button ends with '#'
         # Download page
-        print('Finding page %s...' %url)
+        print('Finding page %s...' % url)
         try:
             res = requests.get(url)
             res.raise_for_status()
@@ -59,7 +59,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         j = 0
         while nextTemp is None:
             if j == 0:
-                #find button with text = Next Comic
+                # find button with text = Next Comic
                 nextTemp = soup.find("span", text='Next Comic')
             else:
                 print("next link couldn't be found")
@@ -67,7 +67,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
                 break
             j += 1
 
-        if nextTemp == None:
+        if nextTemp is None:
             nextPage = 'zzzENDzzz'
         else:
             nextLink = nextTemp.parent

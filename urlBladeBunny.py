@@ -1,4 +1,3 @@
-import requests
 import os
 import time
 from datetime import datetime
@@ -9,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from htmlCreator import buildComicPage
 
-#latestPage = '2382'
+# latestPage = '2382'
 
 
 def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
@@ -45,7 +44,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
             print("Latest search less then 7 days ago, rebuilding page (No search performed)")
             buildComicPage(pagecount, filename, True)
             return pagecount
-        # If end of comic has been reached, don't search reguardless
+        # If end of comic has been reached, don't search regardless
         elif url.endswith('zzzENDzzz'):
             print("End of Comic flag found, no search performed")
             buildComicPage(pagecount, filename, True)
@@ -62,8 +61,9 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
             try:
                 buildComicPage(pagecount, filename, True)
                 return pagecount
-            except:
+            except Exception as err:
                 print("building comic page failed!")
+                print("Error:", err)
                 return 0
 
         while prevLink != url:
@@ -110,8 +110,9 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
         print('***Current Pagecount: ' + str(pagecount) + '***\n')
         try:
             buildComicPage(pagecount, filename, True)
-        except:
+        except Exception as err:
             print("building comic page failed!")
+            print("Error:", err)
             return 0
         return pagecount
 
@@ -119,8 +120,9 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
     if i == 0:
         try:
             os.utime("webcomic/" + filename)
-        except:
+        except Exception as err:
             print("Error updating modified time: " + filename)
+            print("Error:", err)
             exit(-1)
 
     buildComicPage(pagecount, filename, True)
