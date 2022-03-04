@@ -463,7 +463,7 @@ comic_name = "Two Guys and Guy"
 filename = "twoguys"
 urlMain = "http://www.twogag.com/"
 urlFirstPage = "http://twogag.com/archives/4"
-nextTag.append("a")  # use a, rel "next" if this doesn't work
+nextTag.append("a")  # use 'a, rel "next"' if this doesn't work
 nextAttr.append("class")
 nextStr.append("cc-next")
 nextLinkParent = False

@@ -18,6 +18,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
     page_count = 0
     i = 0
     isbutton = False
+    urlnextBase = ""
 
     if os.path.isfile(os.path.join('webcomic', filename)):
         fileExists = True
@@ -36,13 +37,12 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 else:
                     url = lines[page_count - 1]
 
-    urlnextBase = urlBases[0]  # was an else, moved to remove IDE warnings
     if numBases < 1:
         print("No Base defined, assuming full URL in next link")
         urlBases.append("")
         urlnextBase = urlBases[0]
         numBases = 1
-    elif not writeURL and numBases > 1:
+    elif not writeURL and numBases >= 1:
         m = 0
         while m < numBases:
             if url.startswith(urlBases[m]):
@@ -146,7 +146,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 if nextPage.startswith(urlBases[k]):
                     print("New base found: " + urlBases[k])
                     urlnextBase = urlBases[k]
-                    url = nextPage
+                    # url = nextPage  # TODO: Remove if nothing breaks
                     break
                 k += 1
             if k == numBases:
@@ -172,16 +172,17 @@ if __name__ == "__main__":
     nextAttr = []
     nextStr = []
     urlBase = []
-    comic_name = "Tripp"
-    file_name = "tripp"
-    urlMain = "https://web.archive.org/web/20150506105057/http://www.trippcomic.com/home"
-    urlFirstPage = "https://web.archive.org/web/20150507152639/http://www.trippcomic.com/archives/archive/poet-b5e016f"
+    comic_name = "XKCD"
+    filename = "xkcd"
+    urlMain = "http://www.xkcd.com/"
+    urlFirstPage = "http://xkcd.com/1/"
     nextTag.append("a")
     nextAttr.append("rel")
     nextStr.append("next")
+    urlBase.append('http://xkcd.com')
     nextLinkParent = False
-    baseChange = False
+    search_end = '#'
 
     os.makedirs('webcomic', exist_ok=True)
     urlBuild(
-        urlFirstPage, file_name, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, baseChanges=baseChange)
+        urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent, search_end)
