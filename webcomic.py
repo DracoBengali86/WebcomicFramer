@@ -669,6 +669,20 @@ total_pages = urlFinder.urlBuild(
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+# Zoophobia
+display = True
+comic_name = "Zoophobia"
+filename = "zoophobia"
+urlMain = "https://zoophobiacomic.com/"
+urlFirstPage = "https://zoophobiacomic.com/post/127351123949"
+nextTag.append("a")
+nextAttr.append("class")
+nextStr.append("next-button")
+nextLinkParent = False
+total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+comic_list.append(Webcomic(comic_name, filename, total_pages, display))
+del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
+
 
 # FanFiction Stories
 
