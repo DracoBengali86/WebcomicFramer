@@ -31,7 +31,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         # Download page
         print('Finding page %s...' % url)
         try:
-            res = requests.get(url, verify=False)
+            res = requests.get(url)
             res.raise_for_status()
         except requests.exceptions.RequestException as err:
             print(" *** ")

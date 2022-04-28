@@ -485,7 +485,6 @@ urlFirstPage = "http://twokinds.keenspot.com/comic/1/"
 total_pages = urlTwoKinds.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 
-# TODO: Find way to supress InsecureRequestWarning
 # Looking for Group
 display = True
 comic_name = "Looking for Group"
