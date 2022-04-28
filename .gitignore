@@ -242,6 +242,6 @@ old/
 zSync*
 Build_Webcomic*
 
-#chromedriver.exe
-#geckodriver.exe
+chromedriver.exe
+geckodriver.exe
 /WebcomicFramer.yml
