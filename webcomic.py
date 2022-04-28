@@ -1,3 +1,5 @@
+# Some custom URL finders make use of the Chrome Driver webdriver (chromedriver.exe)
+# If you need a webdriver, make sure to download the correct version for your browser version.
 from __future__ import annotations
 from typing import List
 
@@ -74,6 +76,7 @@ urlVol2 = "https://readcomiconline.to/Comic/Blade-Bunny-Vol-2/Issue-1?id=94715"
 total_pages = urlBladeBunny.urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 
+# TODO: Fix Balazo/Find web.archive.org link
 # Balazo
 display = True
 comic_name = "Balazo - Stories in Pretty Pictures"
@@ -125,7 +128,7 @@ total_pages = urlFinder.urlBuild(
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-
+# TODO: Create custom urlFinder for Carciphona
 # Will need something like Ava's Demon for this (completely jQuery-button events for next page)
 # Carciphona
 display = False
@@ -387,6 +390,7 @@ total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextT
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+# TODO: Fix/Find web.archive.org link for Red Moon Rising
 # Red Moon Rising
 display = True
 comic_name = "Red Moon Rising"
@@ -401,6 +405,7 @@ total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextT
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
+# TODO: Fix/Find web.archive.org link for Scout Crossing
 # Scout Crossing
 display = True
 comic_name = "Scout Crossing"
@@ -480,6 +485,7 @@ urlFirstPage = "http://twokinds.keenspot.com/comic/1/"
 total_pages = urlTwoKinds.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 
+# TODO: Find way to supress InsecureRequestWarning
 # Looking for Group
 display = True
 comic_name = "Looking for Group"
@@ -685,7 +691,7 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
 # FanFiction Stories
-
+# TODO: Find workaround for FanFiction.net browser check
 # FF Four Armed Bride
 display = True
 comic_name = "zFF Four Armed Bride"
