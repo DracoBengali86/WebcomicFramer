@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 import undetected_chromedriver as uc
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -35,14 +35,14 @@ def urlBuild(url_first_page, file_name):
         file_age = current_date - file_date
 
         # If file is less than a week old, don't update it.
-        if file_age.days < 7 and not url.endswith('zzzENDzzz'):
-            print("Latest search less then 7 days ago, rebuilding page (No search performed)")
-            buildComicPage(page_count, file_name, True)
+        if file_age.days < 30 and not url.endswith('zzzENDzzz'):
+            print("Latest search less then 30 days ago, rebuilding page (No search performed)")
+            buildComicPage(page_count, file_name)
             return page_count
         # If end of comic has been reached, don't search regardless
         elif url.endswith('zzzENDzzz'):
             print("End of Comic flag found, no search performed")
-            buildComicPage(page_count, file_name, True)
+            buildComicPage(page_count, file_name)
             return page_count
 
     if not url.endswith('zzzENDzzz'):
@@ -50,11 +50,19 @@ def urlBuild(url_first_page, file_name):
             driver = uc.Chrome(use_subprocess=True)
             driver.get(url)
         except TimeoutException as err1:
-            print("failed to load page")
+            print("WebDriver Timeout")
             print(" *** ")
             print(err1)
             print(" *** ")
-            exit(-2)
+            buildComicPage(page_count, file_name)
+            return page_count
+        except WebDriverException as err2:
+            print("WebDriver Exception")
+            print(" *** ")
+            print(err2)
+            print(" *** ")
+            buildComicPage(page_count, file_name)
+            return page_count
 
     # Stop if the next url is the "search_end", or no next URL is found, or next URL is the same as the previous URL
     while not url.endswith('zzzENDzzz'):
@@ -79,9 +87,9 @@ def urlBuild(url_first_page, file_name):
             WebDriverWait(driver, 15).until(
                 EC.presence_of_element_located((By.XPATH, "//button[text()=' Follow/Favorite']"))
             )
-        except TimeoutException as err2:
+        except TimeoutException as err3:
             print(" *** ")
-            print(err2)
+            print(err3)
             print(" *** ")
             print("Page failed to load")
             break
@@ -97,6 +105,15 @@ def urlBuild(url_first_page, file_name):
 
     page_count = page_count + i
     print('Done. Current Page Count: ' + str(page_count))
+
+    # update modified date on file if latest page is last page in file
+    if i == 0:
+        try:
+            os.utime("webcomic/" + file_name)
+        except Exception as err:
+            print("Error updating modified time: " + file_name)
+            print("Error:", err)
+            exit(-1)
 
     buildComicPage(page_count, file_name)
 
