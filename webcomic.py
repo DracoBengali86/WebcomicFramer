@@ -8,6 +8,7 @@ import urlAvasDemon
 import urlBladeBunny
 import urlCAD
 import urlEarthsong
+import urlFanFiction
 import urlFinder
 import urlLFG
 import urlQ2Q
@@ -15,6 +16,15 @@ import urlRoomie
 import urlTwoKinds
 import urlWebToons
 from htmlCreator import buildMainPage
+
+
+class Webcomic:
+    def __init__(self, name, file, page_count, visibility):
+        self.name = name
+        self.file = file
+        self.pages = page_count
+        self.visible = visibility
+
 
 os.makedirs('webcomic', exist_ok=True)
 
@@ -26,16 +36,6 @@ nextTag = []
 nextAttr = []
 nextStr = []
 urlBase = []
-
-
-class Webcomic:
-    def __init__(self, name, file, page_count, visibility):
-        self.name = name
-        self.file = file
-        self.pages = page_count
-        self.visible = visibility
-
-
 comic_list = []
 
 # XKCD
@@ -76,8 +76,7 @@ urlVol2 = "https://readcomiconline.to/Comic/Blade-Bunny-Vol-2/Issue-1?id=94715"
 total_pages = urlBladeBunny.urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 
-# TODO: Fix Balazo/Find web.archive.org link
-# Balazo
+# Balazo - ended - on web.archive.org
 display = True
 comic_name = "Balazo - Stories in Pretty Pictures"
 filename = "balazo"
@@ -390,7 +389,7 @@ total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextT
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-# TODO: Fix/Find web.archive.org link for Red Moon Rising
+# TODO: Fix/Find web.archive.org link for Red Moon Rising or wait for page to be re-written
 # Red Moon Rising
 display = True
 comic_name = "Red Moon Rising"
@@ -405,8 +404,7 @@ total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextT
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
 del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
-# TODO: Fix/Find web.archive.org link for Scout Crossing
-# Scout Crossing
+# Scout Crossing - ended - on web.archive.org
 display = True
 comic_name = "Scout Crossing"
 filename = "scout"
@@ -690,171 +688,104 @@ del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
 # FanFiction Stories
-# TODO: Find workaround for FanFiction.net browser check
 # FF Four Armed Bride
 display = True
 comic_name = "zFF Four Armed Bride"
 filename = "fourarmed"
-urlMain = "https://www.fanfiction.net/s/12103554/1/Four-Armed-Bride"
+# urlMain = "https://www.fanfiction.net/s/12103554/1/Four-Armed-Bride"
 urlFirstPage = "https://www.fanfiction.net/s/12103554/1/Four-Armed-Bride"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF Hereafter
 display = True
 comic_name = "zFF Hereafter"
 filename = "hereafter"
-urlMain = "https://www.fanfiction.net/s/12711718/1/Hereafter"
+# urlMain = "https://www.fanfiction.net/s/12711718/1/Hereafter"
 urlFirstPage = "https://www.fanfiction.net/s/12711718/1/Hereafter"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF Love is a Kind of War
 display = True
 comic_name = "zFF Love is a Kind of War"
 filename = "loveiswar"
-urlMain = "https://www.fanfiction.net/s/8764528/1/Love-is-a-Kind-of-War"
+# urlMain = "https://www.fanfiction.net/s/8764528/1/Love-is-a-Kind-of-War"
 urlFirstPage = "https://www.fanfiction.net/s/8764528/1/Love-is-a-Kind-of-War"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF Monster Falls
 display = True
 comic_name = "zFF Monster Falls"
 filename = "monsterfalls"
-urlMain = "https://www.fanfiction.net/s/11126659/1/Monster-Falls"
+# urlMain = "https://www.fanfiction.net/s/11126659/1/Monster-Falls"
 urlFirstPage = "https://www.fanfiction.net/s/11126659/1/Monster-Falls"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF One Hundred Kisses
 display = True
 comic_name = "zFF One Hundred Kisses"
 filename = "100kisses"
-urlMain = "https://www.fanfiction.net/s/11947059/1/One-Hundred-Kisses"
+# urlMain = "https://www.fanfiction.net/s/11947059/1/One-Hundred-Kisses"
 urlFirstPage = "https://www.fanfiction.net/s/11947059/1/One-Hundred-Kisses"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF Recovery and Resolutions
 display = True
 comic_name = "zFF Recovery and Resolutions"
 filename = "recovery"
-urlMain = "https://www.fanfiction.net/s/11958300/1/Recovery-and-Resolutions"
+# urlMain = "https://www.fanfiction.net/s/11958300/1/Recovery-and-Resolutions"
 urlFirstPage = "https://www.fanfiction.net/s/11958300/1/Recovery-and-Resolutions"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF The Savage Dark
 display = True
 comic_name = "zFF The Savage Dark"
 filename = "savagedark"
-urlMain = "https://www.fanfiction.net/s/12086054/1/The-Savage-Dark"
+# urlMain = "https://www.fanfiction.net/s/12086054/1/The-Savage-Dark"
 urlFirstPage = "https://www.fanfiction.net/s/12086054/1/The-Savage-Dark"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF A Snowstorm of Secrets
 display = True
 comic_name = "zFF A Snowstorm of Secrets"
 filename = "snowstormsecrets"
-urlMain = "https://www.fanfiction.net/s/10023494/1/A-Snowstorm-of-Secrets"
+# urlMain = "https://www.fanfiction.net/s/10023494/1/A-Snowstorm-of-Secrets"
 urlFirstPage = "https://www.fanfiction.net/s/10023494/1/A-Snowstorm-of-Secrets"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF Swaw Mi Krr
 display = True
 comic_name = "zFF Swaw Mi Krr"
 filename = "swawmikrr"
-urlMain = "https://www.fanfiction.net/s/7121323/1/Swaw-M%C3%AC-Krr"
+# urlMain = "https://www.fanfiction.net/s/7121323/1/Swaw-M%C3%AC-Krr"
 urlFirstPage = "https://www.fanfiction.net/s/7121323/1/Swaw-M%C3%AC-Krr"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF The fall of a king
 display = True
 comic_name = "zFF The Fall of a King"
 filename = "kingfall"
-urlMain = "https://www.fanfiction.net/s/11932949/1/The-fall-of-a-king"
+# urlMain = "https://www.fanfiction.net/s/11932949/1/The-fall-of-a-king"
 urlFirstPage = "https://www.fanfiction.net/s/11932949/1/The-fall-of-a-king"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 # FF The True Self
 display = True
 comic_name = "zFF The True Self"
 filename = "trueself"
-urlMain = "https://www.fanfiction.net/s/11888755/1/The-True-Self"
+# urlMain = "https://www.fanfiction.net/s/11888755/1/The-True-Self"
 urlFirstPage = "https://www.fanfiction.net/s/11888755/1/The-True-Self"
-nextTag.append("button")
-nextAttr.append("text")
-nextStr.append("Next >")
-urlBase.append('https://www.fanfiction.net')
-nextLinkParent = False
-total_pages = urlFinder.urlBuild(urlFirstPage, filename, urlMain, urlBase, nextTag, nextAttr, nextStr, nextLinkParent)
+total_pages = urlFanFiction.urlBuild(urlFirstPage, filename)
 comic_list.append(Webcomic(comic_name, filename, total_pages, display))
-del nextTag[:], nextAttr[:], nextStr[:], urlBase[:]
 
 
 # Blocked by not allowing cross-origin framing

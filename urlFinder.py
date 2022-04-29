@@ -146,7 +146,6 @@ def urlBuild(urlFirstPage, filename, urlMain, urlBases, nextTag, nextAttr, nextS
                 if nextPage.startswith(urlBases[k]):
                     print("New base found: " + urlBases[k])
                     urlnextBase = urlBases[k]
-                    # url = nextPage  # TODO: Remove if nothing breaks
                     break
                 k += 1
             if k == numBases:

@@ -2,6 +2,7 @@ import requests
 import os
 from datetime import datetime
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from htmlCreator import buildComicPage
 
 # latestPage = '2382'
@@ -53,7 +54,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
         driver = webdriver.Chrome()
         driver.get(urlMain)
         # select the next button
-        latest_button = driver.find_element_by_xpath("//img[@src='latest.png']")
+        latest_button = driver.find_element(By.XPATH, "//img[@src='latest.png']")
         latest_button.click()
         latestLink = driver.current_url
         driver.quit()
