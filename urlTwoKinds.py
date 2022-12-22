@@ -78,7 +78,7 @@ def urlBuild(urlFirstPage, filename, urlMain=None):
         url = 'http://twokinds.keenspot.com' + nextPage
 
     pagecount = pagecount + i
-    print('Done. Current Pagecount: ' + str(pagecount))
+    print('Done. Current Page Count: ' + str(pagecount))
 
     buildComicPage(pagecount, filename)
 

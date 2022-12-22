@@ -125,7 +125,7 @@ def urlBuild(urlFirstPage, filename, nextTag, nextAttr, nextStr, searchend='.us.
         url = urlnextBase + nextPage
 
     pagecount = pagecount + i
-    print('Done. Current Pagecount: ' + str(pagecount))
+    print('Done. Current Page Count: ' + str(pagecount))
 
     buildComicPage(pagecount, filename)
 

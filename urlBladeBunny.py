@@ -107,7 +107,7 @@ def urlBuild(urlFirstPage, filename, urlMain, urlVol1End, urlVol2):
     except TypeError:
         print("Chrome not found")
         print("***Blade Bunny is currently broken***")
-        print('***Current Pagecount: ' + str(pagecount) + '***\n')
+        print('***Current Page Count: ' + str(pagecount) + '***\n')
         try:
             buildComicPage(pagecount, filename, True)
         except Exception as err:

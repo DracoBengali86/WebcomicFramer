@@ -38,7 +38,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
         # print("File Date: " + fileDate.strftime("%Y-%m-%d %H:%M:%S"))
         # print(fileAge.days)
 
-        # If file is less then a week old, don't update it.
+        # If file is less than a week old, don't update it.
         # Comic currently updates every Thursday
         if fileAge.days < 7 and not url.endswith('zzzENDzzz'):
             print("Latest search less then 7 days ago, rebuilding page (No search performed)")
@@ -75,7 +75,7 @@ def urlBuild(urlFirstPage, filename, urlMain):
     except TypeError:
         print("Chrome not found")
         print("***Ava's Demon is currently broken***")
-        print('***Current Pagecount: ' + str(pagecount) + '***\n')
+        print('***Current Page Count: ' + str(pagecount) + '***\n')
         try:
             buildComicPage(pagecount, filename, True)
         except Exception as err:
