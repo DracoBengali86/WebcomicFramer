@@ -34,7 +34,7 @@ def urlBuild(url_first_page, file_name):
         file_date = datetime.fromtimestamp(os.path.getmtime("webcomic/" + file_name))
         file_age = current_date - file_date
 
-        # If file is less than a week old, don't update it.
+        # If file is less than a month old, don't update it.
         if file_age.days < 30 and not url.endswith('zzzENDzzz'):
             print("Latest search less then 30 days ago, rebuilding page (No search performed)")
             buildComicPage(page_count, file_name)
@@ -103,6 +103,7 @@ def urlBuild(url_first_page, file_name):
         next_button.click()
         url = driver.current_url
 
+    driver.quit()
     page_count = page_count + i
     print('Done. Current Page Count: ' + str(page_count))
 
